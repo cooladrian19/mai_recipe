@@ -99,13 +99,14 @@ button:hover {
     font-size: 2rem;
     padding-left: 4rem;
     padding-top: 2rem;
-
 }
 .trending-container {
-    display: flex;
+    display: grid;
+    grid-row: auto;
     flex-wrap: wrap;
     gap: 2rem;
     padding: 3rem 8rem;
+    background-color: #f79273;
 }
 .trending-container a {
     color: inherit;
@@ -230,14 +231,23 @@ input:focus {
 }  
 .section-container {
     background-color: rgba(161, 69, 69, 0.438);
+    padding: 1rem 2rem;
     display: flex;
-    flex-wrap:wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
 }
 .section-container legend{
     font-size: 20px;
 }
 .section-container fieldset{
     font-size: 16px;
+}
+.sections {
+    
+}
+.food-type {
+
 }
 .find-button {
     border-radius:8px;
