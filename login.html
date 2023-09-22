@@ -7,7 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="styles.css">
-    <script src="app.js" defer></script>
     <title>login/signup</title>
     <link rel="icon" type="image/png" href="assets/maiLogo.png">
 </head>
@@ -18,14 +17,23 @@
             <div class="mai-sprite"></div>
         </div>
         <form class="login-field">
-            <label>first name: </label>
-            <input class="input-field" type="text" id="fname-input" placeholder="username">
-            <label>last name: </label>
-            <input class="input-field" type="password" id="lname-input" placeholder="password"><br>
-            <input class="login-button" type="submit" value="login">
+            <label>username: </label>
+            <input class="input-field" type="text" id="login-username" placeholder="username">
+            <label>password: </label>
+            <input class="input-field" type="password" id="login-password" placeholder="password"><br>
+            <input id="login" class="login-button" value="login">
             <div>no account? <a class="link" href="" >sign up</a></div>
+        </form> <br>
+
+        <form class="login-field">
+            <label>username: </label>
+            <input class="input-field" type="text" id="signup-username" placeholder="username">
+            <label>email: </label>
+            <input class="input-field" type="text" id="signup-email" placeholder="email">
+            <label>password: </label>
+            <input class="input-field" type="password" id="signup-password" placeholder="password"><br>
+            <input id="signup" class="login-button" value="signup">
         </form>
-        
     </div>
 
     <script src="app.js" type="module"></script>
