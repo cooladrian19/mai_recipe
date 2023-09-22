@@ -55,25 +55,29 @@ button:hover {
     justify-content: center;
     align-items: center;
     gap: 0.3rem;
-    background-color: #909090;
 }
 .sprite-container {
-    background-color: #7b6161;
     display: flex;
     justify-content: center;
     align-items: center;
-    animation: slide 3s steps(25,end);
+    padding-right: .5rem;
+    animation: slide 3s forwards;
+    transform: translateX(-100%);
 }
 @keyframes slide {
-    from { translate: 0px;}
-    to { transition: 0px;}
+    from {
+        transform: translateX(calc(-100% - 2rem));
+    }
+    to {
+        transform: translateX(0%);
+    }
 }
 .mai-sprite {
     /*115 × 23*/
     width: calc(115px / 6);
     height: 23px;
     background:url(assets/maiSprite.png);
-    animation: animate 0.5s steps(6) infinite;
+    animation: animate 0.4s steps(6) infinite;
     transform: scale(2);
 }
 @keyframes animate {
@@ -86,33 +90,26 @@ button:hover {
 }
 .web-name {
     color: rgb(75, 75, 75);
-    font-family: SourceSansPro,Helvetica,sans-serif;
-    font-size: 2rem;
+    font-size: 1.7rem;
     font-weight: 550;
-    line-height: 1.5rem;
     text-transform: lowercase;
     text-underline-offset: .25rem;
 }
 .right-nav {
     display: flex;
+    justify-content: space-evenly;
     align-items: center;
     gap: 1.3rem;
-    background-color:#909090
 }
 .search {
-    display: flex;
-    justify-content: center;
     align-items: center;
 }
 .search img {
     width: 20px;
     margin: 0.4rem;
 }
-
 .about {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    text-align: center;
 }
 .profile-circle {
     border-width: 1px;
@@ -290,31 +287,127 @@ input:focus {
     background-color: rgba(161, 69, 69, 0.438);
     padding: 1rem 2rem;
     display: flex;
-    align-items: center;
     justify-content: center;
+    flex-wrap: wrap;
     gap: 2rem;
 }
-.section-container legend{
-    font-size: 20px;
-}
-.section-container fieldset{
-    font-size: 16px;
-}
 .sections {
-
+    background-color: #e6bebec5;
+    width: 30rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    border-end-end-radius: 2rem;
 }
-.food-type {
-
+.sections legend {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    padding-bottom: 1.2rem;
+    font-size: 1.4rem;
+    letter-spacing: 0.5rem;
+    background-color: #eb8383;
 }
-.find-button {
-    border-radius:8px;
-    font-size: 15px;
-    padding: 2px 50px;
-    background-color: transparent;
+.checkbox-wrapper-1 *,
+  .checkbox-wrapper-1 ::after,
+  .checkbox-wrapper-1 ::before {
+    box-sizing: border-box;
+  }
+  .checkbox-wrapper-1 [type=checkbox].substituted {
+    margin: 0;
+    width: 0;
+    height: 0;
+    display: inline;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+  }
+  .checkbox-wrapper-1 [type=checkbox].substituted + label:before {
+    content: "";
+    display: inline-block;
+    vertical-align: top;
+    height: 1.15em;
+    width: 1.15em;
+    margin-right: 0.6em;
+    color: rgba(0, 0, 0, 0.275);
+    border: solid 0.06em;
+    box-shadow: 0 0 0.04em, 0 0.06em 0.16em -0.03em inset, 0 0 0 0.07em transparent inset;
+    border-radius: 0.2em;
+    background: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" version="1.1" xml:space="preserve" fill="white" viewBox="0 0 9 9"><rect x="0" y="4.3" transform="matrix(-0.707 -0.7072 0.7072 -0.707 0.5891 10.4702)" width="4.3" height="1.6" /><rect x="2.2" y="2.9" transform="matrix(-0.7071 0.7071 -0.7071 -0.7071 12.1877 2.9833)" width="6.1" height="1.7" /></svg>') no-repeat center, white;
+    background-size: 0;
+    will-change: color, border, background, background-size, box-shadow;
+    transform: translate3d(0, 0, 0);
+    transition: color 0.1s, border 0.1s, background 0.15s, box-shadow 0.1s;
+  }
+  .checkbox-wrapper-1 [type=checkbox].substituted:enabled:active + label:before,
+  .checkbox-wrapper-1 [type=checkbox].substituted:enabled + label:active:before {
+    box-shadow: 0 0 0.04em, 0 0.06em 0.16em -0.03em transparent inset, 0 0 0 0.07em rgba(0, 0, 0, 0.1) inset;
+    background-color: #f0f0f0;
+  }
+  .checkbox-wrapper-1 [type=checkbox].substituted:checked + label:before {
+    background-color: #f58989;
+    background-size: 0.75em;
+    color: rgba(0, 0, 0, 0.075);
+  }
+  .checkbox-wrapper-1 [type=checkbox].substituted:checked:enabled:active + label:before,
+  .checkbox-wrapper-1 [type=checkbox].substituted:checked:enabled + label:active:before {
+    background-color: #fdab97;
+    color: rgba(0, 0, 0, 0.275);
+  }
+  .checkbox-wrapper-1 [type=checkbox].substituted:focus + label:before {
+    box-shadow: 0 0 0.04em, 0 0.06em 0.16em -0.03em transparent inset, 0 0 0 0.07em rgba(0, 0, 0, 0.1) inset, 0 0 0 3.3px rgba(247, 181, 181, 0.55), 0 0 0 5px rgba(206, 150, 150, 0.671);
+  }
+  .checkbox-wrapper-1 [type=checkbox].substituted:focus:active + label:before,
+  .checkbox-wrapper-1 [type=checkbox].substituted:focus + label:active:before {
+    box-shadow: 0 0 0.04em, 0 0.06em 0.16em -0.03em transparent inset, 0 0 0 0.07em rgba(0, 0, 0, 0.1) inset, 0 0 0 3.3px rgba(65, 159, 255, 0.55), 0 0 0 5px rgba(65, 159, 255, 0.3);
+  }
+  .checkbox-wrapper-1 [type=checkbox].substituted:disabled + label:before {
+    opacity: 0.5;
+  }
+  .checkbox-wrapper-1 [type=checkbox].substituted.dark + label:before {
+    color: rgba(255, 255, 255, 0.275);
+    background-color: #222222;
+    background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" version="1.1" xml:space="preserve" fill="rgba(34, 34, 34, 0.999)" viewBox="0 0 9 9"><rect x="0" y="4.3" transform="matrix(-0.707 -0.7072 0.7072 -0.707 0.5891 10.4702)" width="4.3" height="1.6" /><rect x="2.2" y="2.9" transform="matrix(-0.7071 0.7071 -0.7071 -0.7071 12.1877 2.9833)" width="6.1" height="1.7" /></svg>');
+  }
+  .checkbox-wrapper-1 [type=checkbox].substituted.dark:enabled:active + label:before,
+  .checkbox-wrapper-1 [type=checkbox].substituted.dark:enabled + label:active:before {
+    background-color: #444;
+    box-shadow: 0 0 0.04em, 0 0.06em 0.16em -0.03em transparent inset, 0 0 0 0.07em rgba(255, 255, 255, 0.1) inset;
+  }
+  .checkbox-wrapper-1 [type=checkbox].substituted.dark:checked + label:before {
+    background-color: #a97035;
+    color: rgba(255, 255, 255, 0.075);
+  }
+  .checkbox-wrapper-1 [type=checkbox].substituted.dark:checked:enabled:active + label:before,
+  .checkbox-wrapper-1 [type=checkbox].substituted.dark:checked:enabled + label:active:before {
+    background-color: #c68035;
+    color: rgba(0, 0, 0, 0.275);
+  }
+.find-recipes-button-container {
+    background-color: #4444446e;
+    padding: 3rem 5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
-.find-button:hover {
-    background-color: rgb(255, 241, 241);
-    transition: 0.3s;
+.find-recipes-button {
+    border-radius: 8px;
+    padding: 1rem 5rem;
+    background-color: rgb(255, 197, 197);
+    transition-duration: 0.4s;
+    cursor: pointer;
+    border: none;
+}
+.find-recipes-button:hover {
+    background-color: rgb(236, 151, 151);
+}
+.link {
+    color: #f05f5f;
+    transition-duration: 0.4s;
+}
+.link:hover {
+    color: #f77f7f;
+    
 }
 
 
