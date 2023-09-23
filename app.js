@@ -44,9 +44,7 @@ signup.addEventListener("click", (e) => {
         username: username,
         email: email,
       })
-
       alert("user signed up :)");
-      // ...
     })
     .catch((error) => {
       const errorCode = error.code;
@@ -105,3 +103,6 @@ signOut.addEventListener('click' ,(e) => {
     alert("oops: " + errorMessage);
   });
 })
+
+
+// login transition 

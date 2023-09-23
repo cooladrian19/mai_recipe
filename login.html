@@ -16,25 +16,26 @@
         <div class="sprite-container">
             <div class="mai-sprite"></div>
         </div>
-        <form class="login-field">
+        
+        <div class="login-field">
             <label>email: </label>
             <input class="input-field" type="text" id="login-email" placeholder="email">
             <label>password: </label>
-            <input class="input-field" type="password" id="login-password" placeholder="password"><br>
-            <input id="login" class="login-button" value="login">
-            <div>no account? <a class="link" href="" >sign up</a></div>
-        </form> <br>
+            <input class="input-field" type="password" id="login-password" placeholder="password">
+            <button id="login" class="login-button">login</button>
+            <div class="login-footer">no account? <a class="link" href="" >sign up</a></div>
+        </div> 
 
-        <form class="login-field">
-            <label>username: </label>
+        <div class="login-field">
+            <label >username: </label>
             <input class="input-field" type="text" id="signup-username" placeholder="username">
             <label>email: </label>
             <input class="input-field" type="text" id="signup-email" placeholder="email">
             <label>password: </label>
-            <input class="input-field" type="password" id="signup-password" placeholder="password"><br>
-            <input id="signup" class="login-button" value="signup">
-            <div>already have an accunt? <a class="link" href="" >sign in</a></div>
-        </form>
+            <input class="input-field" type="password" id="signup-password" placeholder="password">
+            <button id="signup" class="login-button">signup</button>
+            <div class="login-footer">already have an account? <a class="link" href="" >sign in</a></div>
+        </div>
     </div>
 
     <script src="app.js" type="module"></script>

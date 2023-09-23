@@ -225,6 +225,11 @@ a::before, a::after {
     display: flex;
     flex-direction: column;
     padding: 10px;
+    gap: 0.3rem;
+}
+.input-container {
+    display: flex;
+    flex-direction: column;
 }
 .input-field {
     border-radius: 9px;
@@ -237,6 +242,7 @@ input:focus {
     border-radius: 15px;
 }
 .login-button {
+    text-align: center;
     border-radius: 8px;
     background-color: rgb(255, 197, 197);
     transition-duration: 0.4s;
@@ -253,6 +259,9 @@ input:focus {
 .link:hover {
     color: #f77f7f;
     
+}
+.login-footer {
+    text-align: left;
 }
 
 
