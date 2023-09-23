@@ -4,20 +4,23 @@
     padding: 0;
     box-sizing: border-box;
     font-family: SourceSansPro,Helvetica,sans-serif;
-    font-weight: 470;
     letter-spacing: 1.2px;
     text-underline-offset: .25rem;
     -webkit-font-smoothing: antialiased;
   }
 body {
     background-color: #ffdfdf;
-    font-size: 1rem;
     line-height: 1rem;
+    min-height: 100vh;
 }
 a {
     color: inherit;
     position: relative;
     line-height: 24px;
+}
+a:hover {
+    color: inherit;
+    text-decoration: none !important;
 }
 li {
     list-style: none;
@@ -30,6 +33,7 @@ button:hover {
 
 /* NAV-BAR */
 .nav-container {
+    background-color: #ffdfdf;
     display: flex;
     flex-direction: row;
     justify-content:space-between;
@@ -102,11 +106,13 @@ button:hover {
     gap: 1.3rem;
 }
 .search {
+    display: flex;
+    justify-content: center;
     align-items: center;
 }
 .search img {
-    width: 20px;
-    margin: 0.4rem;
+    width: 1.5rem;
+    margin-right: 0.2rem;
 }
 .about {
     text-align: center;
@@ -121,7 +127,7 @@ button:hover {
     transition: 0.1s;
 }
 .profile-circle:hover {
-    border-color: #eb8383;
+    border-color:#a16376;
 }
 a::before, a::after {
     content: '';
@@ -137,7 +143,7 @@ a::before, a::after {
     bottom: 0;
     width: 100%;
     height: 2px;
-    background: #492059;
+    background: #a16376;
     transform: scaleX(0);
 }
 .hover-line:hover::before {
@@ -269,16 +275,15 @@ input:focus {
 /* SEARCH INGREDIENTS */
 .search-tip {
     display: flex;
-    flex-wrap: wrap;
     justify-content: center;
+    padding: 2rem 1rem;
     align-items: center;
-    background-color: #ccb5b5;
 }
 .search-tip p{
     overflow: hidden; 
-    font-size: medium; 
+    font-size: 1rem; 
+    font-weight: normal;
     border-right: .15em solid rgb(176, 177, 143);
-    letter-spacing: .1em; /* Adjust as needed */
     white-space: nowrap;      
     animation: 
     typing 3.5s steps(40, end), 
@@ -286,15 +291,77 @@ input:focus {
 }
 @keyframes typing {
     from { width: 0% }
-    to { width: 40% }
+    to { width: 23% }
 }
 @keyframes blink-caret {
     from, to { border-color: transparent }
-    50% { border-color: rgb(107, 106, 106); }
+    50% { border-color: rgb(87, 87, 87); }
 }  
-.section-container {
-    background-color: rgba(161, 69, 69, 0.438);
+.main-selection {
+    
+}
+.selection-container {
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    grid-template-rows: 1fr;
+    grid-column-gap: 0px;
+}
+.selection-border {
+    border-width: 0.2vh;
+}
+.search-by-ingredients-wrap {
+    grid-area: 1 / 1 / 2 / 2;
+    padding: 0.5rem 1rem 2rem;
+}
+.search-span {
+    display: flex;
+    justify-content: center;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color:#414141;
+}
+.search-by-ingredients-wrap:hover {
+    border-style: solid;
+    border-width: 0.15rem;
+    border-color:#a16376;
+}
+.search-by-name-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    grid-area: 1 / 2 / 2 / 3;
+    padding: 0.5rem 1rem 2rem;
+}
+.search-by-name-wrap input {
+    display: none;
+}
+.search-by-name-wrap:hover input{
+   display: flex;
+}
+.search-by-name-wrap:hover {
+    border-style: solid;
+    border-width: 0.15rem;
+    border-color: rgb(150, 90, 100);
+}
+.search-by-name-input {
+    border-radius: 8px;
+    border: none;
+    margin-top: 1rem;
+    padding:2px 10px;
+    width: 50%;
+    transition-duration: 0.5s;
+}
+.search-by-name-input:focus {
+    outline-color: #ec4a4a;
+    border-radius: 15px;
+}
+.section-container-wrap {
     padding: 1rem 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+.section-container {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
@@ -306,21 +373,40 @@ input:focus {
     display: flex;
     flex-direction: column;
     gap: 0.4rem;
-    border-end-end-radius: 2rem;
+    padding: 1rem 0.5rem 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0px 1px 10px #a39797;
 }
-.sections legend {
+.food-type {
     display: flex;
     justify-content: left;
     align-items: center;
-    padding-bottom: 1.2rem;
-    font-size: 1.4rem;
-    letter-spacing: 0.5rem;
-    background-color: #eb8383;
+    border-end-end-radius: 20px;
+    padding: 1rem 0.5rem 1.5rem;
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #3a3a3a;
+
+    box-shadow: 0px 1px 10px #af8989;
+}
+.ingredient-wrapper {
+    color: #333333;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem 0.5rem;
+    flex-wrap: wrap;
+    max-height: 600px;
+    gap: 0.85rem;
+    font-weight: normal;
 }
 .checkbox-wrapper-1 *,
   .checkbox-wrapper-1 ::after,
   .checkbox-wrapper-1 ::before {
     box-sizing: border-box;
+    display: flex;
+    justify-content: left;
+    align-items: center;
   }
   .checkbox-wrapper-1 [type=checkbox].substituted {
     margin: 0;
@@ -393,22 +479,32 @@ input:focus {
     color: rgba(0, 0, 0, 0.275);
   }
 .find-recipes-button-container {
-    background-color: #4444446e;
-    padding: 3rem 5rem;
+    padding: 1rem 1rem;
     display: flex;
     justify-content: center;
     align-items: center;
+    border-radius: 10px;
+    
+}
+.find-recipes-button-container img {
+    width:4rem;
 }
 .find-recipes-button {
-    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
     padding: 1rem 5rem;
-    background-color: rgb(255, 197, 197);
+    width: 25%;
+    background-color: rgb(250, 200, 200);
+    box-shadow: 0px 1px 5px #d1c7c7;
     transition-duration: 0.4s;
     cursor: pointer;
     border: none;
 }
 .find-recipes-button:hover {
-    background-color: rgb(236, 151, 151);
+    background-color: rgb(245, 223, 223);
+    border-radius: 20px;
 }
 .link {
     color: #f05f5f;
@@ -417,6 +513,57 @@ input:focus {
 .link:hover {
     color: #f77f7f;
     
+}
+
+
+
+/* FOOTER */
+.footer {
+    background-color: rgb(83, 66, 74);
+    position: sticky;
+    top: 100%;
+    padding: 2.3rem 1rem;
+    color: rgb(255, 242, 244);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+}
+.footer-title{
+    display: flex;
+    align-items: center;
+}
+.footer-title img{
+    width: 2.7rem;
+    transform: rotate(30deg);
+    margin-bottom: 0.3rem;
+}
+.footer-title h2 {
+    font-size: 1.5rem;
+    letter-spacing: 1.5px;
+}
+.footer-info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2.5rem;
+}
+.github-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.linkedin-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.github-logo {
+    width: 1.62rem;
+}
+.linkedin-logo {
+    width: 1.83rem;
 }
 
 

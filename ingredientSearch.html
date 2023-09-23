@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="styles.css">
     <script src="app.js" defer></script>
-    <title>Search ingredients</title>
+    <title>search ingredients</title>
     <link rel="icon" type="image/png" href="assets/maiLogo.png">
 </head>
 
@@ -23,326 +23,642 @@
         </div>
         <div class="right-nav">
             <div class="search">
-                <a class="hover-line" href="/"> <img src="assets/recipeIcon.png"> search recipes</a>
+                <div>
+                    <a class="hover-line" href="ingredientSearch.html"> <img src="assets/recipeIcon.png"> search
+                        recipes</a>
+                </div>
             </div>
             <div class="about">
-                <a class="hover-line" href="/">about</a>
+                <a class="hover-line" href="about.html">about</a>
             </div>
             <a href="/" class="profile-circle"></a>
         </div>
     </div>
 
 
-    <!--TRENDING CONTAINER-->
+    <!--SEARCH TIP-->
     <div class="search-tip">
-        <p class="tip-text">welcome to mai's recipe. need something new to cook? i have you covered!
-            simply tell me what ingredients you have and ill show you everything you can make.
+        <p class="tip-text">welcome to mai's recipe.
+            need something new to cook? i have you covered!
         </p>
     </div>
-    <div class="section-container">
 
-        <!-- PROTIEN INGREDIENTS -->
-        <fieldset class="sections">
-            <legend class="food-type">Protein</legend>
-            <div class="checkbox-wrapper-1">
-                <input id="chicken" class="substituted" type="checkbox" aria-hidden="true" />
-                <label for="chicken">Chicken</label>
-            </div>
-            <div class="checkbox-wrapper-1">
-                <input id="turkey" class="substituted" type="checkbox" aria-hidden="true" />
-                <label for="turkey">Turkey</label>
-            </div>
-            <div class="checkbox-wrapper-1">
-                <input id="duck" class="substituted" type="checkbox" aria-hidden="true" />
-                <label for="duck">Duck</label>
-            </div>
-            <div class="checkbox-wrapper-1">
-                <input id="beef" class="substituted" type="checkbox" aria-hidden="true" />
-                <label for="beef">Beef</label>
-            </div>
-            <div class="checkbox-wrapper-1">
-                <input id="ground-beef" class="substituted" type="checkbox" aria-hidden="true" />
-                <label for="ground-beef">Ground Beef</label>
-            </div>
-            <div class="checkbox-wrapper-1">
-                <input id="steak" class="substituted" type="checkbox" aria-hidden="true" />
-                <label for="steak">Steak</label>
-            </div>
-            <div class="checkbox-wrapper-1">
-                <input id="pork" class="substituted" type="checkbox" aria-hidden="true" />
-                <label for="pork">Pork</label>
-            </div>
-            <div class="checkbox-wrapper-1">
-                <input id="lamb" class="substituted" type="checkbox" aria-hidden="true" />
-                <label for="lamb">Lamb</label>
-            </div>
-            <div class="checkbox-wrapper-1">
-                <input id="fish" class="substituted" type="checkbox" aria-hidden="true" />
-                <label for="fish">Fish</label>
-            </div>
-            <div class="checkbox-wrapper-1">
-                <input id="shrimp" class="substituted" type="checkbox" aria-hidden="true" />
-                <label for="shrimp">Shrimp</label>
-            </div>
-            <div class="checkbox-wrapper-1">
-                <input id="salmon" class="substituted" type="checkbox" aria-hidden="true" />
-                <label for="salmon">Salmon</label>
-            </div>
-            <div class="checkbox-wrapper-1">
-                <input id="tuna" class="substituted" type="checkbox" aria-hidden="true" />
-                <label for="tuna">Tuna</label>
-            </div>
-            <div class="checkbox-wrapper-1">
-                <input id="cod" class="substituted" type="checkbox" aria-hidden="true" />
-                <label for="cod">Cod</label>
-            </div>
-            <div class="checkbox-wrapper-1">
-                <input id="halibut" class="substituted" type="checkbox" aria-hidden="true" />
-                <label for="halibut">Halibut</label>
-            </div>
-            <div class="checkbox-wrapper-1">
-                <input id="trout" class="substituted" type="checkbox" aria-hidden="true" />
-                <label for="trout">Trout</label>
-            </div>
-            <div class="checkbox-wrapper-1">
-                <input id="crab" class="substituted" type="checkbox" aria-hidden="true" />
-                <label for="crab">Crab</label>
-            </div>
-            <div class="checkbox-wrapper-1">
-                <input id="lobster" class="substituted" type="checkbox" aria-hidden="true" />
-                <label for="lobster">Lobster</label>
-            </div>
-            <div class="checkbox-wrapper-1">
-                <input id="scallops" class="substituted" type="checkbox" aria-hidden="true" />
-                <label for="scallops">Scallops</label>
-            </div>
-            <div class="checkbox-wrapper-1">
-                <input id="clams" class="substituted" type="checkbox" aria-hidden="true" />
-                <label for="clams">Clams</label>
-            </div>
-            <div class="checkbox-wrapper-1">
-                <input id="mussels" class="substituted" type="checkbox" aria-hidden="true" />
-                <label for="mussels">Mussels</label>
-            </div>
-            <div class="checkbox-wrapper-1">
-                <input id="tofu" class="substituted" type="checkbox" aria-hidden="true" />
-                <label for="tofu">Tofu</label>
-            </div>
-        </fieldset>
-
-        <!-- VEGETABLE INGREDIENTS -->
-        <fieldset class="sections">
-            <legend class="food-type">Vegetables</legend>
-            <!-- New Styled Checkboxes for Vegetables -->
-            <div class="checkbox-wrapper-1">
-                <input id="tomato" class="substituted" type="checkbox" aria-hidden="true" />
-                <label for="tomato">Tomato</label>
-            </div>
-            <div class="checkbox-wrapper-1">
-                <input id="onion" class="substituted" type="checkbox" aria-hidden="true" />
-                <label for="onion">Onion</label>
-            </div>
-            <div class="checkbox-wrapper-1">
-                <input id="carrot" class="substituted" type="checkbox" aria-hidden="true" />
-                <label for="carrot">Carrot</label>
-            </div>
-            <div class="checkbox-wrapper-1">
-                <input id="broccoli" class="substituted" type="checkbox" aria-hidden="true" />
-                <label for="broccoli">Broccoli</label>
-            </div>
-            <div class="checkbox-wrapper-1">
-                <input id="spinach" class="substituted" type="checkbox" aria-hidden="true" />
-                <label for="spinach">Spinach</label>
-            </div>
-            <div class="checkbox-wrapper-1">
-                <input id="zucchini" class="substituted" type="checkbox" aria-hidden="true" />
-                <label for="zucchini">Zucchini</label>
-            </div>
-            <div class="checkbox-wrapper-1">
-                <input id="bellpepper" class="substituted" type="checkbox" aria-hidden="true" />
-                <label for="bellpepper">Bell Pepper</label>
-            </div>
-            <div class="checkbox-wrapper-1">
-                <input id="asparagus" class="substituted" type="checkbox" aria-hidden="true" />
-                <label for="asparagus">Asparagus</label>
-            </div>
-            <div class="checkbox-wrapper-1">
-                <input id="cabbage" class="substituted" type="checkbox" aria-hidden="true" />
-                <label for="cabbage">Cabbage</label>
-            </div>
-            <div class="checkbox-wrapper-1">
-                <input id="cucumber" class="substituted" type="checkbox" aria-hidden="true" />
-                <label for="cucumber">Cucumber</label>
-            </div>
-            <div class="checkbox-wrapper-1">
-                <input id="potato" class="substituted" type="checkbox" aria-hidden="true" />
-                <label for="potato">Potato</label>
-            </div>
-            <div class="checkbox-wrapper-1">
-                <input id="lettuce" class="substituted" type="checkbox" aria-hidden="true" />
-                <label for="lettuce">Lettuce</label>
-            </div>
-            <div class="checkbox-wrapper-1">
-                <input id="celery" class="substituted" type="checkbox" aria-hidden="true" />
-                <label for="celery">Celery</label>
-            </div>
-            <div class="checkbox-wrapper-1">
-                <input id="peas" class="substituted" type="checkbox" aria-hidden="true" />
-                <label for="peas">Peas</label>
-            </div>
-            <div class="checkbox-wrapper-1">
-                <input id="mushrooms" class="substituted" type="checkbox" aria-hidden="true" />
-                <label for="mushrooms">Mushrooms</label>
-            </div>
-            <div class="checkbox-wrapper-1">
-                <input id="cauliflower" class="substituted" type="checkbox" aria-hidden="true" />
-                <label for="cauliflower">Cauliflower</label>
-            </div>
-            <div class="checkbox-wrapper-1">
-                <input id="green-beans" class="substituted" type="checkbox" aria-hidden="true" />
-                <label for="green-beans">Green Beans</label>
-            </div>
-            <div class="checkbox-wrapper-1">
-                <input id="sweet-potato" class="substituted" type="checkbox" aria-hidden="true" />
-                <label for="sweet-potato">Sweet Potato</label>
-            </div>
-            <div class="checkbox-wrapper-1">
-                <input id="kale" class="substituted" type="checkbox" aria-hidden="true" />
-                <label for="kale">Kale</label>
-            </div>
-            <div class="checkbox-wrapper-1">
-                <input id="eggplant" class="substituted" type="checkbox" aria-hidden="true" />
-                <label for="eggplant">Eggplant</label>
-            </div>
-            <div class="checkbox-wrapper-1">
-                <input id="radish" class="substituted" type="checkbox" aria-hidden="true" />
-                <label for="radish">Radish</label>
-            </div>
-            <div class="checkbox-wrapper-1">
-                <input id="beets" class="substituted" type="checkbox" aria-hidden="true" />
-                <label for="beets">Beets</label>
-            </div>
-            <div class="checkbox-wrapper-1">
-                <input id="corn" class="substituted" type="checkbox" aria-hidden="true" />
-                <label for="corn">Corn</label>
-            </div>
-
-            
-
-        </fieldset>
-
-        <!-- FRUIT INGREDIENTS -->
-        <fieldset class="sections">
-            <legend class="food-type">Fruits</legend>
-            <!-- New Styled Checkboxes for Fruits -->
-            <div class="checkbox-wrapper-1">
-                <input id="banana" class="substituted" type="checkbox" aria-hidden="true" />
-                <label for="banana">Banana</label>
-            </div>
-            <div class="checkbox-wrapper-1">
-                <input id="apples" class="substituted" type="checkbox" aria-hidden="true" />
-                <label for="apples">Apples</label>
-            </div>
-            <div class="checkbox-wrapper-1">
-                <input id="orange" class="substituted" type="checkbox" aria-hidden="true" />
-                <label for="orange">Orange</label>
-            </div>
-            <div class="checkbox-wrapper-1">
-                <input id="strawberries" class="substituted" type="checkbox" aria-hidden="true" />
-                <label for="strawberries">Strawberries</label>
-            </div>
-            <div class="checkbox-wrapper-1">
-                <input id="blueberries" class="substituted" type="checkbox" aria-hidden="true" />
-                <label for="blueberries">Blueberries</label>
-            </div>
-            <div class="checkbox-wrapper-1">
-                <input id="raspberries" class="substituted" type="checkbox" aria-hidden="true" />
-                <label for="raspberries">Raspberries</label>
-            </div>
-            <div class="checkbox-wrapper-1">
-                <input id="blackberries" class="substituted" type="checkbox" aria-hidden="true" />
-                <label for="blackberries">Blackberries</label>
-            </div>
-            <div class="checkbox-wrapper-1">
-                <input id="cranberries" class="substituted" type="checkbox" aria-hidden="true" />
-                <label for="cranberries">Cranberries</label>
-            </div>
-            <div class="checkbox-wrapper-1">
-                <input id="mango" class="substituted" type="checkbox" aria-hidden="true" />
-                <label for="mango">Mango</label>
-            </div>
-            <div class="checkbox-wrapper-1">
-                <input id="pineapple" class="substituted" type="checkbox" aria-hidden="true" />
-                <label for="pineapple">Pineapple</label>
-            </div>
-            <div class="checkbox-wrapper-1">
-                <input id="lime" class="substituted" type="checkbox" aria-hidden="true" />
-                <label for="lime">Lime</label>
-            </div>
-            <div class="checkbox-wrapper-1">
-                <input id="kiwi" class="substituted" type="checkbox" aria-hidden="true" />
-                <label for="kiwi">Kiwi</label>
-            </div>
-            <div class="checkbox-wrapper-1">
-                <input id="watermelon" class="substituted" type="checkbox" aria-hidden="true" />
-                <label for="watermelon">Watermelon</label>
-            </div>
-            <div class="checkbox-wrapper-1">
-                <input id="grapes" class="substituted" type="checkbox" aria-hidden="true" />
-                <label for="grapes">Grapes</label>
-            </div>
-            <div class="checkbox-wrapper-1">
-                <input id="peaches" class="substituted" type="checkbox" aria-hidden="true" />
-                <label for="peaches">Peaches</label>
-            </div>
-            <div class="checkbox-wrapper-1">
-                <input id="pear" class="substituted" type="checkbox" aria-hidden="true" />
-                <label for="pear">Pear</label>
-            </div>
-            <div class="checkbox-wrapper-1">
-                <input id="apricots" class="substituted" type="checkbox" aria-hidden="true" />
-                <label for="apricots">Apricots</label>
-            </div>
-            <div class="checkbox-wrapper-1">
-                <input id="plums" class="substituted" type="checkbox" aria-hidden="true" />
-                <label for="plums">Plums</label>
-            </div>
-            <div class="checkbox-wrapper-1">
-                <input id="nectarine" class="substituted" type="checkbox" aria-hidden="true" />
-                <label for="nectarine">Nectarine</label>
-            </div>
-            <div class="checkbox-wrapper-1">
-                <input id="grapefruit" class="substituted" type="checkbox" aria-hidden="true" />
-                <label for="grapefruit">Grapefruit</label>
-            </div>
-            <div class="checkbox-wrapper-1">
-                <input id="cherries" class="substituted" type="checkbox" aria-hidden="true" />
-                <label for="cherries">Cherries</label>
-            </div>
-            <div class="checkbox-wrapper-1">
-                <input id="pomegranate" class="substituted" type="checkbox" aria-hidden="true" />
-                <label for="pomegranate">Pomegranate</label>
-            </div>
-            <div class="checkbox-wrapper-1">
-                <input id="guava" class="substituted" type="checkbox" aria-hidden="true" />
-                <label for="guava">Guava</label>
-            </div>
-
-        </fieldset>
+    <!--MAIN SELECTION CONTAINER-->
+    <div class="main-selection">
+        <!--SELECTION OPTION -->
+        <div class="selection-container">
+            <div class="search-by-ingredients-wrap selection-border">
+                <span class="search-span">search by ingredients</span>
+            </div>
+            <div class="search-by-name-wrap selection-border">
+                <span class="search-span">search by name</span>
+                <input class="search-by-name-input" id="search-by-name-value" type="text"
+                    placeholder="enter by name here">
+            </div>
+        </div>
 
 
-        <!-- LIQUID INGREDIENTS -->
-        <fieldset class="sections">
-            <div class="checkbox-wrapper-1">
-                <input id="guava" class="substituted" type="checkbox" aria-hidden="true" />
-                <label for="guava">Guava</label>
-            </div>
-        </fieldset>
+        <div class="section-container-wrap">
+            <div class="section-container">
+                <!-- PROTIEN INGREDIENTS -->
+                <fieldset class="sections">
+                    <div class="food-type">Protein</div>
+                    <div class="ingredient-wrapper">
+                        <div class="checkbox-wrapper-1">
+                            <input id="chicken" class="substituted" type="checkbox" aria-hidden="true" />
+                            <label for="chicken">Chicken</label>
+                        </div>
+                        <div class="checkbox-wrapper-1">
+                            <input id="turkey" class="substituted" type="checkbox" aria-hidden="true" />
+                            <label for="turkey">Turkey</label>
+                        </div>
+                        <div class="checkbox-wrapper-1">
+                            <input id="duck" class="substituted" type="checkbox" aria-hidden="true" />
+                            <label for="duck">Duck</label>
+                        </div>
+                        <div class="checkbox-wrapper-1">
+                            <input id="beef" class="substituted" type="checkbox" aria-hidden="true" />
+                            <label for="beef">Beef</label>
+                        </div>
+                        <div class="checkbox-wrapper-1">
+                            <input id="ground-beef" class="substituted" type="checkbox" aria-hidden="true" />
+                            <label for="ground-beef">Ground Beef</label>
+                        </div>
+                        <div class="checkbox-wrapper-1">
+                            <input id="steak" class="substituted" type="checkbox" aria-hidden="true" />
+                            <label for="steak">Steak</label>
+                        </div>
+                        <div class="checkbox-wrapper-1">
+                            <input id="pork" class="substituted" type="checkbox" aria-hidden="true" />
+                            <label for="pork">Pork</label>
+                        </div>
+                        <div class="checkbox-wrapper-1">
+                            <input id="lamb" class="substituted" type="checkbox" aria-hidden="true" />
+                            <label for="lamb">Lamb</label>
+                        </div>
+                        <div class="checkbox-wrapper-1">
+                            <input id="fish" class="substituted" type="checkbox" aria-hidden="true" />
+                            <label for="fish">Fish</label>
+                        </div>
+                        <div class="checkbox-wrapper-1">
+                            <input id="shrimp" class="substituted" type="checkbox" aria-hidden="true" />
+                            <label for="shrimp">Shrimp</label>
+                        </div>
+                        <div class="checkbox-wrapper-1">
+                            <input id="salmon" class="substituted" type="checkbox" aria-hidden="true" />
+                            <label for="salmon">Salmon</label>
+                        </div>
+                        <div class="checkbox-wrapper-1">
+                            <input id="tuna" class="substituted" type="checkbox" aria-hidden="true" />
+                            <label for="tuna">Tuna</label>
+                        </div>
+                        <div class="checkbox-wrapper-1">
+                            <input id="cod" class="substituted" type="checkbox" aria-hidden="true" />
+                            <label for="cod">Cod</label>
+                        </div>
+                        <div class="checkbox-wrapper-1">
+                            <input id="halibut" class="substituted" type="checkbox" aria-hidden="true" />
+                            <label for="halibut">Halibut</label>
+                        </div>
+                        <div class="checkbox-wrapper-1">
+                            <input id="trout" class="substituted" type="checkbox" aria-hidden="true" />
+                            <label for="trout">Trout</label>
+                        </div>
+                        <div class="checkbox-wrapper-1">
+                            <input id="crab" class="substituted" type="checkbox" aria-hidden="true" />
+                            <label for="crab">Crab</label>
+                        </div>
+                        <div class="checkbox-wrapper-1">
+                            <input id="lobster" class="substituted" type="checkbox" aria-hidden="true" />
+                            <label for="lobster">Lobster</label>
+                        </div>
+                        <div class="checkbox-wrapper-1">
+                            <input id="scallops" class="substituted" type="checkbox" aria-hidden="true" />
+                            <label for="scallops">Scallops</label>
+                        </div>
+                        <div class="checkbox-wrapper-1">
+                            <input id="clams" class="substituted" type="checkbox" aria-hidden="true" />
+                            <label for="clams">Clams</label>
+                        </div>
+                        <div class="checkbox-wrapper-1">
+                            <input id="mussels" class="substituted" type="checkbox" aria-hidden="true" />
+                            <label for="mussels">Mussels</label>
+                        </div>
+                        <div class="checkbox-wrapper-1">
+                            <input id="tofu" class="substituted" type="checkbox" aria-hidden="true" />
+                            <label for="tofu">Tofu</label>
+                        </div>
+                    </div>
 
+                </fieldset>
+
+                <!-- VEGETABLE INGREDIENTS -->
+                <fieldset class="sections">
+                    <div class="food-type">Vegetables</div>
+                    <!-- New Styled Checkboxes for Vegetables -->
+                    <div class="ingredient-wrapper">
+                        <div class="checkbox-wrapper-1">
+                            <input id="tomato" class="substituted" type="checkbox" aria-hidden="true" />
+                            <label for="tomato">Tomato</label>
+                        </div>
+                        <div class="checkbox-wrapper-1">
+                            <input id="onion" class="substituted" type="checkbox" aria-hidden="true" />
+                            <label for="onion">Onion</label>
+                        </div>
+                        <div class="checkbox-wrapper-1">
+                            <input id="carrot" class="substituted" type="checkbox" aria-hidden="true" />
+                            <label for="carrot">Carrot</label>
+                        </div>
+                        <div class="checkbox-wrapper-1">
+                            <input id="broccoli" class="substituted" type="checkbox" aria-hidden="true" />
+                            <label for="broccoli">Broccoli</label>
+                        </div>
+                        <div class="checkbox-wrapper-1">
+                            <input id="spinach" class="substituted" type="checkbox" aria-hidden="true" />
+                            <label for="spinach">Spinach</label>
+                        </div>
+                        <div class="checkbox-wrapper-1">
+                            <input id="zucchini" class="substituted" type="checkbox" aria-hidden="true" />
+                            <label for="zucchini">Zucchini</label>
+                        </div>
+                        <div class="checkbox-wrapper-1">
+                            <input id="bellpepper" class="substituted" type="checkbox" aria-hidden="true" />
+                            <label for="bellpepper">Bell Pepper</label>
+                        </div>
+                        <div class="checkbox-wrapper-1">
+                            <input id="asparagus" class="substituted" type="checkbox" aria-hidden="true" />
+                            <label for="asparagus">Asparagus</label>
+                        </div>
+                        <div class="checkbox-wrapper-1">
+                            <input id="cabbage" class="substituted" type="checkbox" aria-hidden="true" />
+                            <label for="cabbage">Cabbage</label>
+                        </div>
+                        <div class="checkbox-wrapper-1">
+                            <input id="cucumber" class="substituted" type="checkbox" aria-hidden="true" />
+                            <label for="cucumber">Cucumber</label>
+                        </div>
+                        <div class="checkbox-wrapper-1">
+                            <input id="potato" class="substituted" type="checkbox" aria-hidden="true" />
+                            <label for="potato">Potato</label>
+                        </div>
+                        <div class="checkbox-wrapper-1">
+                            <input id="lettuce" class="substituted" type="checkbox" aria-hidden="true" />
+                            <label for="lettuce">Lettuce</label>
+                        </div>
+                        <div class="checkbox-wrapper-1">
+                            <input id="celery" class="substituted" type="checkbox" aria-hidden="true" />
+                            <label for="celery">Celery</label>
+                        </div>
+                        <div class="checkbox-wrapper-1">
+                            <input id="peas" class="substituted" type="checkbox" aria-hidden="true" />
+                            <label for="peas">Peas</label>
+                        </div>
+                        <div class="checkbox-wrapper-1">
+                            <input id="mushrooms" class="substituted" type="checkbox" aria-hidden="true" />
+                            <label for="mushrooms">Mushrooms</label>
+                        </div>
+                        <div class="checkbox-wrapper-1">
+                            <input id="cauliflower" class="substituted" type="checkbox" aria-hidden="true" />
+                            <label for="cauliflower">Cauliflower</label>
+                        </div>
+                        <div class="checkbox-wrapper-1">
+                            <input id="green-beans" class="substituted" type="checkbox" aria-hidden="true" />
+                            <label for="green-beans">Green Beans</label>
+                        </div>
+                        <div class="checkbox-wrapper-1">
+                            <input id="sweet-potato" class="substituted" type="checkbox" aria-hidden="true" />
+                            <label for="sweet-potato">Sweet Potato</label>
+                        </div>
+                        <div class="checkbox-wrapper-1">
+                            <input id="kale" class="substituted" type="checkbox" aria-hidden="true" />
+                            <label for="kale">Kale</label>
+                        </div>
+                        <div class="checkbox-wrapper-1">
+                            <input id="eggplant" class="substituted" type="checkbox" aria-hidden="true" />
+                            <label for="eggplant">Eggplant</label>
+                        </div>
+                        <div class="checkbox-wrapper-1">
+                            <input id="radish" class="substituted" type="checkbox" aria-hidden="true" />
+                            <label for="radish">Radish</label>
+                        </div>
+                        <div class="checkbox-wrapper-1">
+                            <input id="beets" class="substituted" type="checkbox" aria-hidden="true" />
+                            <label for="beets">Beets</label>
+                        </div>
+                        <div class="checkbox-wrapper-1">
+                            <input id="corn" class="substituted" type="checkbox" aria-hidden="true" />
+                            <label for="corn">Corn</label>
+                        </div>
+                    </div>
+
+
+
+                </fieldset>
+
+                <!-- FRUIT INGREDIENTS -->
+                <fieldset class="sections">
+                    <div class="food-type">Fruits</div>
+                    <!-- New Styled Checkboxes for Fruits -->
+                    <div class="ingredient-wrapper">
+                        <div class="checkbox-wrapper-1">
+                            <input id="banana" class="substituted" type="checkbox" aria-hidden="true" />
+                            <label for="banana">Banana</label>
+                        </div>
+                        <div class="checkbox-wrapper-1">
+                            <input id="apples" class="substituted" type="checkbox" aria-hidden="true" />
+                            <label for="apples">Apples</label>
+                        </div>
+                        <div class="checkbox-wrapper-1">
+                            <input id="orange" class="substituted" type="checkbox" aria-hidden="true" />
+                            <label for="orange">Orange</label>
+                        </div>
+                        <div class="checkbox-wrapper-1">
+                            <input id="strawberries" class="substituted" type="checkbox" aria-hidden="true" />
+                            <label for="strawberries">Strawberries</label>
+                        </div>
+                        <div class="checkbox-wrapper-1">
+                            <input id="blueberries" class="substituted" type="checkbox" aria-hidden="true" />
+                            <label for="blueberries">Blueberries</label>
+                        </div>
+                        <div class="checkbox-wrapper-1">
+                            <input id="raspberries" class="substituted" type="checkbox" aria-hidden="true" />
+                            <label for="raspberries">Raspberries</label>
+                        </div>
+                        <div class="checkbox-wrapper-1">
+                            <input id="blackberries" class="substituted" type="checkbox" aria-hidden="true" />
+                            <label for="blackberries">Blackberries</label>
+                        </div>
+                        <div class="checkbox-wrapper-1">
+                            <input id="cranberries" class="substituted" type="checkbox" aria-hidden="true" />
+                            <label for="cranberries">Cranberries</label>
+                        </div>
+                        <div class="checkbox-wrapper-1">
+                            <input id="mango" class="substituted" type="checkbox" aria-hidden="true" />
+                            <label for="mango">Mango</label>
+                        </div>
+                        <div class="checkbox-wrapper-1">
+                            <input id="pineapple" class="substituted" type="checkbox" aria-hidden="true" />
+                            <label for="pineapple">Pineapple</label>
+                        </div>
+                        <div class="checkbox-wrapper-1">
+                            <input id="lime" class="substituted" type="checkbox" aria-hidden="true" />
+                            <label for="lime">Lime</label>
+                        </div>
+                        <div class="checkbox-wrapper-1">
+                            <input id="kiwi" class="substituted" type="checkbox" aria-hidden="true" />
+                            <label for="kiwi">Kiwi</label>
+                        </div>
+                        <div class="checkbox-wrapper-1">
+                            <input id="watermelon" class="substituted" type="checkbox" aria-hidden="true" />
+                            <label for="watermelon">Watermelon</label>
+                        </div>
+                        <div class="checkbox-wrapper-1">
+                            <input id="grapes" class="substituted" type="checkbox" aria-hidden="true" />
+                            <label for="grapes">Grapes</label>
+                        </div>
+                        <div class="checkbox-wrapper-1">
+                            <input id="peaches" class="substituted" type="checkbox" aria-hidden="true" />
+                            <label for="peaches">Peaches</label>
+                        </div>
+                        <div class="checkbox-wrapper-1">
+                            <input id="pear" class="substituted" type="checkbox" aria-hidden="true" />
+                            <label for="pear">Pear</label>
+                        </div>
+                        <div class="checkbox-wrapper-1">
+                            <input id="apricots" class="substituted" type="checkbox" aria-hidden="true" />
+                            <label for="apricots">Apricots</label>
+                        </div>
+                        <div class="checkbox-wrapper-1">
+                            <input id="plums" class="substituted" type="checkbox" aria-hidden="true" />
+                            <label for="plums">Plums</label>
+                        </div>
+                        <div class="checkbox-wrapper-1">
+                            <input id="nectarine" class="substituted" type="checkbox" aria-hidden="true" />
+                            <label for="nectarine">Nectarine</label>
+                        </div>
+                        <div class="checkbox-wrapper-1">
+                            <input id="grapefruit" class="substituted" type="checkbox" aria-hidden="true" />
+                            <label for="grapefruit">Grapefruit</label>
+                        </div>
+                        <div class="checkbox-wrapper-1">
+                            <input id="cherries" class="substituted" type="checkbox" aria-hidden="true" />
+                            <label for="cherries">Cherries</label>
+                        </div>
+                        <div class="checkbox-wrapper-1">
+                            <input id="pomegranate" class="substituted" type="checkbox" aria-hidden="true" />
+                            <label for="pomegranate">Pomegranate</label>
+                        </div>
+                        <div class="checkbox-wrapper-1">
+                            <input id="guava" class="substituted" type="checkbox" aria-hidden="true" />
+                            <label for="guava">Guava</label>
+                        </div>
+                    </div>
+
+
+                </fieldset>
+
+
+
+                <!-- DAIRY INGREDIENTS -->
+                <fieldset class="sections">
+                    <div class="food-type">Dairy</div>
+                    <div class="ingredient-wrapper">
+                        <div class="checkbox-wrapper-1">
+                            <input id="milk" class="substituted" type="checkbox" aria-hidden="true" />
+                            <label for="milk">Milk</label>
+                        </div>
+                        <div class="checkbox-wrapper-1">
+                            <input id="cheese" class="substituted" type="checkbox" aria-hidden="true" />
+                            <label for="cheese">Cheese</label>
+                        </div>
+                        <div class="checkbox-wrapper-1">
+                            <input id="yogurt" class="substituted" type="checkbox" aria-hidden="true" />
+                            <label for="yogurt">Yogurt</label>
+                        </div>
+                        <div class="checkbox-wrapper-1">
+                            <input id="butter" class="substituted" type="checkbox" aria-hidden="true" />
+                            <label for="butter">Butter</label>
+                        </div>
+                        <div class="checkbox-wrapper-1">
+                            <input id="cream" class="substituted" type="checkbox" aria-hidden="true" />
+                            <label for="cream">Cream</label>
+                        </div>
+                        <div class="checkbox-wrapper-1">
+                            <input id="cottage-cheese" class="substituted" type="checkbox" aria-hidden="true" />
+                            <label for="cottage-cheese">Cottage Cheese</label>
+                        </div>
+                        <div class="checkbox-wrapper-1">
+                            <input id="sour-cream" class="substituted" type="checkbox" aria-hidden="true" />
+                            <label for="sour-cream">Sour Cream</label>
+                        </div>
+                        <div class="checkbox-wrapper-1">
+                            <input id="whipped-cream" class="substituted" type="checkbox" aria-hidden="true" />
+                            <label for="whipped-cream">Whipped Cream</label>
+                        </div>
+                        <div class="checkbox-wrapper-1">
+                            <input id="ice-cream" class="substituted" type="checkbox" aria-hidden="true" />
+                            <label for="ice-cream">Ice Cream</label>
+                        </div>
+                        <div class="checkbox-wrapper-1">
+                            <input id="evaporated-milk" class="substituted" type="checkbox" aria-hidden="true" />
+                            <label for="evaporated-milk">Evaporated Milk</label>
+                        </div>
+                        <div class="checkbox-wrapper-1">
+                            <input id="condensed-milk" class="substituted" type="checkbox" aria-hidden="true" />
+                            <label for="condensed-milk">Condensed Milk</label>
+                        </div>
+                        <div class="checkbox-wrapper-1">
+                            <input id="buttermilk" class="substituted" type="checkbox" aria-hidden="true" />
+                            <label for="buttermilk">Buttermilk</label>
+                        </div>
+                        <div class="checkbox-wrapper-1">
+                            <input id="goat-milk" class="substituted" type="checkbox" aria-hidden="true" />
+                            <label for="goat-milk">Goat Milk</label>
+                        </div>
+                        <div class="checkbox-wrapper-1">
+                            <input id="almond-milk" class="substituted" type="checkbox" aria-hidden="true" />
+                            <label for="almond-milk">Almond Milk</label>
+                        </div>
+                        <div class="checkbox-wrapper-1">
+                            <input id="soy-milk" class="substituted" type="checkbox" aria-hidden="true" />
+                            <label for="soy-milk">Soy Milk</label>
+                        </div>
+                        <div class="checkbox-wrapper-1">
+                            <input id="oat-milk" class="substituted" type="checkbox" aria-hidden="true" />
+                            <label for="oat-milk">Oat Milk</label>
+                        </div>
+                        <div class="checkbox-wrapper-1">
+                            <input id="rice-milk" class="substituted" type="checkbox" aria-hidden="true" />
+                            <label for="rice-milk">Rice Milk</label>
+                        </div>
+                        <div class="checkbox-wrapper-1">
+                            <input id="maple-syrup" class="substituted" type="checkbox" aria-hidden="true" />
+                            <label for="maple-syrup">Maple Syrup</label>
+                        </div>
+                    </div>
+
+
+                </fieldset>
+
+
+                <!-- GRAINS/CEREALS INGREDIENTS -->
+                <fieldset class="sections">
+                    <div class="food-type">Grains and Cereals</div>
+                    <div class="ingredient-wrapper">
+                        <div class="checkbox-wrapper-1">
+                            <input id="rice" class="substituted" type="checkbox" aria-hidden="true" />
+                            <label for="rice">Rice</label>
+                        </div>
+                        <div class="checkbox-wrapper-1">
+                            <input id="quinoa" class="substituted" type="checkbox" aria-hidden="true" />
+                            <label for="quinoa">Quinoa</label>
+                        </div>
+                        <div class="checkbox-wrapper-1">
+                            <input id="oats" class="substituted" type="checkbox" aria-hidden="true" />
+                            <label for="oats">Oats</label>
+                        </div>
+                        <div class="checkbox-wrapper-1">
+                            <input id="pasta" class="substituted" type="checkbox" aria-hidden="true" />
+                            <label for="pasta">Pasta</label>
+                        </div>
+                        <div class="checkbox-wrapper-1">
+                            <input id="cereal" class="substituted" type="checkbox" aria-hidden="true" />
+                            <label for="cereal">Cereal</label>
+                        </div>
+                        <div class="checkbox-wrapper-1">
+                            <input id="rye" class="substituted" type="checkbox" aria-hidden="true" />
+                            <label for="rye">Rye</label>
+                        </div>
+                        <div class="checkbox-wrapper-1">
+                            <input id="wheat" class="substituted" type="checkbox" aria-hidden="true" />
+                            <label for="wheat">Wheat</label>
+                        </div>
+                        <div class="checkbox-wrapper-1">
+                            <input id="cornmeal" class="substituted" type="checkbox" aria-hidden="true" />
+                            <label for="cornmeal">Cornmeal</label>
+                        </div>
+                        <div class="checkbox-wrapper-1">
+                            <input id="rice-noodles" class="substituted" type="checkbox" aria-hidden="true" />
+                            <label for="rice-noodles">Rice Noodles</label>
+                        </div>
+                    </div>
+                </fieldset>
+
+
+                <!-- BAKING SUPPLIES INGREDIENTS -->
+                <fieldset class="sections">
+                    <div class="food-type">Baking Supplies</div>
+                    <div class="ingredient-wrapper">
+                        <div class="checkbox-wrapper-1">
+                            <input id="flour" class="substituted" type="checkbox" aria-hidden="true" />
+                            <label for="flour">Flour</label>
+                        </div>
+                        <div class="checkbox-wrapper-1">
+                            <input id="sugar" class="substituted" type="checkbox" aria-hidden="true" />
+                            <label for="sugar">Sugar</label>
+                        </div>
+                        <div class="checkbox-wrapper-1">
+                            <input id="brown-sugar" class="substituted" type="checkbox" aria-hidden="true" />
+                            <label for="brown-sugar">Brown Sugar</label>
+                        </div>
+                        <div class="checkbox-wrapper-1">
+                            <input id="granulated-sugar" class="substituted" type="checkbox" aria-hidden="true" />
+                            <label for="granulated-sugar">Granulated Sugar</label>
+                        </div>
+                        <div class="checkbox-wrapper-1">
+                            <input id="honey" class="substituted" type="checkbox" aria-hidden="true" />
+                            <label for="honey">Honey</label>
+                        </div>
+                        <div class="checkbox-wrapper-1">
+                            <input id="corn-syrup" class="substituted" type="checkbox" aria-hidden="true" />
+                            <label for="corn-syrup">Corn Syrup</label>
+                        </div>
+                        <div class="checkbox-wrapper-1">
+                            <input id="baking-powder" class="substituted" type="checkbox" aria-hidden="true" />
+                            <label for="baking-powder">Baking Powder</label>
+                        </div>
+                        <div class="checkbox-wrapper-1">
+                            <input id="baking-soda" class="substituted" type="checkbox" aria-hidden="true" />
+                            <label for="baking-soda">Baking Soda</label>
+                        </div>
+                        <div class="checkbox-wrapper-1">
+                            <input id="yeast" class="substituted" type="checkbox" aria-hidden="true" />
+                            <label for="yeast">Yeast</label>
+                        </div>
+                        <div class="checkbox-wrapper-1">
+                            <input id="vanilla-extract" class="substituted" type="checkbox" aria-hidden="true" />
+                            <label for="vanilla-extract">Vanilla Extract</label>
+                        </div>
+                        <div class="checkbox-wrapper-1">
+                            <input id="cocoa-powder" class="substituted" type="checkbox" aria-hidden="true" />
+                            <label for="cocoa-powder">Cocoa Powder</label>
+                        </div>
+                        <div class="checkbox-wrapper-1">
+                            <input id="chocolate-chips" class="substituted" type="checkbox" aria-hidden="true" />
+                            <label for="chocolate-chips">Chocolate Chips</label>
+                        </div>
+                        <div class="checkbox-wrapper-1">
+                            <input id="cornstarch" class="substituted" type="checkbox" aria-hidden="true" />
+                            <label for="cornstarch">Cornstarch</label>
+                        </div>
+                        <div class="checkbox-wrapper-1">
+                            <input id="bread-crumbs" class="substituted" type="checkbox" aria-hidden="true" />
+                            <label for="bread-crumbs">Bread Crumbs</label>
+                        </div>
+
+                    </div>
+                </fieldset>
+                
+
+                <!-- SPICES INGREDIENTS -->
+                <fieldset class="sections">
+                    <div class="food-type">Spices and Condiments</div>
+                    <div class="ingredient-wrapper">
+                        <div class="checkbox-wrapper-1">
+                            <input id="salt" class="substituted" type="checkbox" aria-hidden="true" />
+                            <label for="salt">Salt</label>
+                        </div>
+                        <div class="checkbox-wrapper-1">
+                            <input id="pepper" class="substituted" type="checkbox" aria-hidden="true" />
+                            <label for="pepper">Pepper</label>
+                        </div>
+                        <div class="checkbox-wrapper-1">
+                            <input id="garlic-powder" class="substituted" type="checkbox" aria-hidden="true" />
+                            <label for="garlic-powder">Garlic Powder</label>
+                        </div>
+                        <div class="checkbox-wrapper-1">
+                            <input id="onion-powder" class="substituted" type="checkbox" aria-hidden="true" />
+                            <label for="onion-powder">Onion Powder</label>
+                        </div>
+                        <div class="checkbox-wrapper-1">
+                            <input id="cayenne-pepper" class="substituted" type="checkbox" aria-hidden="true" />
+                            <label for="cayenne-pepper">Cayenne Pepper</label>
+                        </div>
+                        <div class="checkbox-wrapper-1">
+                            <input id="paprika" class="substituted" type="checkbox" aria-hidden="true" />
+                            <label for="paprika">Paprika</label>
+                        </div>
+                        <div class="checkbox-wrapper-1">
+                            <input id="cumin" class="substituted" type="checkbox" aria-hidden="true" />
+                            <label for="cumin">Cumin</label>
+                        </div>
+                        <div class="checkbox-wrapper-1">
+                            <input id="cinnamon" class="substituted" type="checkbox" aria-hidden="true" />
+                            <label for="cinnamon">Cinnamon</label>
+                        </div>
+                        <div class="checkbox-wrapper-1">
+                            <input id="mustard" class="substituted" type="checkbox" aria-hidden="true" />
+                            <label for="mustard">Mustard</label>
+                        </div>
+                        <div class="checkbox-wrapper-1">
+                            <input id="ketchup" class="substituted" type="checkbox" aria-hidden="true" />
+                            <label for="ketchup">Ketchup</label>
+                        </div>
+                        <div class="checkbox-wrapper-1">
+                            <input id="mayonnaise" class="substituted" type="checkbox" aria-hidden="true" />
+                            <label for="mayonnaise">Mayonnaise</label>
+                        </div>
+                        <div class="checkbox-wrapper-1">
+                            <input id="vinegar" class="substituted" type="checkbox" aria-hidden="true" />
+                            <label for="vinegar">Vinegar</label>
+                        </div>
+                        <div class="checkbox-wrapper-1">
+                            <input id="soy-sauce" class="substituted" type="checkbox" aria-hidden="true" />
+                            <label for="soy-sauce">Soy Sauce</label>
+                        </div>
+                        <div class="checkbox-wrapper-1">
+                            <input id="fish-sauce" class="substituted" type="checkbox" aria-hidden="true" />
+                            <label for="fish-sauce">Fish Sauce</label>
+                        </div>
+                        <div class="checkbox-wrapper-1">
+                            <input id="oyster-sauce" class="substituted" type="checkbox" aria-hidden="true" />
+                            <label for="oyster-sauce">Oyster Sauce</label>
+                        </div>
+                        <div class="checkbox-wrapper-1">
+                            <input id="sesame-oil" class="substituted" type="checkbox" aria-hidden="true" />
+                            <label for="sesame-oil">Sesame Oil</label>
+                        </div>
+                        <div class="checkbox-wrapper-1">
+                            <input id="olive-oil" class="substituted" type="checkbox" aria-hidden="true" />
+                            <label for="olive-oil">Olive Oil</label>
+                        </div>
+                        <div class="checkbox-wrapper-1">
+                            <input id="broth" class="substituted" type="checkbox" aria-hidden="true" />
+                            <label for="broth">Broth (e.g., chicken, beef)</label>
+                        </div>
+                    </div>
+                </fieldset>
+                
+
+            </div>
+            <div class="find-recipes-button-container">
+                <img src="assets/searchRecipe.png">
+                <input class="find-recipes-button" type="submit" value="find recipes">
+            </div>
+
+        </div>
     </div>
 
-    <div class="find-recipes-button-container">
-        <input class="find-recipes-button" type="submit" value="find recipes">
+
+
+
+    <!-- FOOTER -->
+    <div class="footer">
+        <div class="footer-title">
+            <img src="assets/chopsticks.png">
+            <h2>mai's recipe</h2>
+        </div>
+        <div class="footer-info">
+            <div class="github-container">
+                <a href="https://github.com/cooladrian19" target="_blank" class="hover-line"> <img class="github-logo"
+                        src="assets/github.png"> github</a>
+            </div>
+            <div class="linkedin-container">
+                <a href="https://www.linkedin.com/in/nguyena270" target="_blank" class="hover-line"> <img
+                        class="linkedin-logo" src="assets/linkedin.png"> linkedIn</a>
+            </div>
+            <a href="about.html" class="hover-line">about</a>
+        </div>
     </div>
 
     <script src="app.js" type="module"></script>
