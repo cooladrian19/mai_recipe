@@ -60,6 +60,7 @@ button:hover {
     align-items: center;
     gap: 0.3rem;
 }
+
 .sprite-container {
     display: flex;
     justify-content: center;
@@ -579,7 +580,7 @@ ul.ks-cboxtags li input[type="checkbox"]:focus + label {
     }
     
 }
-@media (max-width: 420px) {
+@media (max-width: 450px) {
     body {
         font-size: .7rem;
     }

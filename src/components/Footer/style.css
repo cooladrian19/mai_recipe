@@ -1,0 +1,144 @@
+/* UTILITIES */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: SourceSansPro,Helvetica,sans-serif;
+    letter-spacing: 1.2px;
+    text-underline-offset: .25rem;
+    -webkit-font-smoothing: antialiased;
+  }
+body {
+    background-color: #ffdfdf;
+    line-height: 1rem;
+    min-height: 100vh;
+}
+a {
+    color: inherit;
+    position: relative;
+    line-height: 24px;
+}
+a:hover {
+    color: inherit;
+    text-decoration: none !important;
+}
+li {
+    list-style: none;
+}
+button:hover {
+    cursor: pointer;
+}
+
+
+
+/* FOOTER */
+.footer {
+    background-color: rgb(83, 66, 74);
+    position: sticky;
+    top: 100%;
+    padding: 2.3rem 1rem;
+    color: rgb(255, 242, 244);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+}
+.footer-title{
+    display: flex;
+    align-items: center;
+}
+.footer-title img{
+    width: 2.7rem;
+    transform: rotate(30deg);
+    margin-bottom: 0.3rem;
+}
+.footer-title h2 {
+    font-size: 1.5rem;
+    letter-spacing: 1.5px;
+}
+.footer-info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2.5rem;
+}
+.github-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.linkedin-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.github-logo {
+    width: 1.62rem;
+}
+.linkedin-logo {
+    width: 1.83rem;
+}
+
+
+
+/* MEDIA SIZING */
+@media (max-width: 650px) {
+    body {
+        font-size: 0.9rem;
+    }
+    .web-name {
+        font-size: 1.5rem;
+    }
+    .profile-circle {
+        padding: 1.1rem;
+    }
+    .right-nav {
+        gap: 0.8rem;
+        font-size: 0.9rem;
+    }
+    .search img {
+        width: 15px;
+        margin: 0.1rem;
+    }
+    .mai-sprite {
+        /*115 × 23*/
+        transform: scale(1.5);
+    }
+    .search-span {
+        font-size: 1rem;
+    }
+    
+}
+@media (max-width: 450px) {
+    body {
+        font-size: .7rem;
+    }
+    .web-name {
+        font-size: 1rem;
+    }
+    .profile-circle {
+        padding: 0.7rem;
+    }
+    .recipe-title {
+        font-size: 0.7rem;
+    }
+    .recipe-text{
+        font-size: 0.5rem;
+    }
+    .right-nav {
+        gap: 0.6rem;
+        font-size: 0.6rem;
+    }
+    .search img {
+        width: 10px;
+        margin: 0.01rem;
+    }
+    .mai-sprite {
+        /*115 × 23*/
+        transform: scale(1.2);
+    }
+    .search-span {
+        font-size: 0.8rem;
+    }
+}
