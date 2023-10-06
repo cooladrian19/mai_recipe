@@ -4,13 +4,13 @@ import githubLogo from '../../assets/github.png';
 import linkedinLogo from '../../assets/linkedin.png';
 import chopsticksLogo from '../../assets/chopsticks.png';
 
-function Footer() {
+export default function Footer() {
     return (
         <div className="footer">
-            <div className="footer-title">
+            <a className="footer-title" href="/">
                 <img src={chopsticksLogo} alt="Chopsticks" />
                 <h2>mai's recipe</h2>
-            </div>
+            </a>
             <div className="footer-info">
                 <div className="github-container">
                     <a href="https://github.com/cooladrian19" target="_blank" className="hover-line">
@@ -22,10 +22,8 @@ function Footer() {
                         <img className="linkedin-logo" src={linkedinLogo}alt="LinkedIn" /> LinkedIn
                     </a>
                 </div>
-                <a href="about.html" className="hover-line">about</a>
+                <a href="/about" className="hover-line">about</a>
             </div>
         </div>
     );
 }
-
-export default Footer;

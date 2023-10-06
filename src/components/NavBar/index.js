@@ -1,11 +1,11 @@
 import React from "react";
-import "./style.css";
 import SearchIcon from "../../assets/recipeIcon.png";
+import "./style.css";
 
 export default function Navbar() {
   return (
     <div className="nav-container">
-      <a className="web-title" href="/home">
+      <a className="web-title" href="/">
         <div className="sprite-container">
           <div className="mai-sprite"></div>
         </div>
@@ -14,7 +14,7 @@ export default function Navbar() {
       <div className="right-nav">
         <div className="search">
           <div>
-            <a className="hover-line" href="ingredientSearch.html">
+            <a className="hover-line" href="/search">
               <img src={SearchIcon} alt="Search Icon" /> search recipes
             </a>
           </div>

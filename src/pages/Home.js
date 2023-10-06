@@ -1,11 +1,14 @@
-import Trending from "../components/Trending/Trending";
-
-import React from 'react'
+import Trending from "../components/Trending";
+import Navbar from "../components/NavBar";
+import Footer from "../components/Footer";
+import React from "react";
 
 export default function Home() {
   return (
     <div>
-        <Trending />
+      <Navbar />
+      <Trending />
+      <Footer />
     </div>
-  )
+  );
 }

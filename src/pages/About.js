@@ -1,7 +1,19 @@
-import React from 'react'
+import React from "react";
+import Navbar from "../components/NavBar";
+import Footer from "../components/Footer";
+import "./About.css";
 
 export default function About() {
   return (
-    <div>About</div>
-  )
+    <div>
+      <Navbar />
+      <div className="card-container">
+        <div className="card">
+          <legend className="card-title">about me</legend>
+          <p className="card-info">Hi, my name is Adrian Nguyen. I am a computer science major.</p>
+        </div>
+      </div>
+      <Footer />
+    </div>
+  );
 }

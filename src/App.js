@@ -1,10 +1,11 @@
+import React from "react";
 import "./App.css";
-import Navbar from "./components/NavBar";
-import Footer from "./components/Footer";
-import Pages from "./pages/Pages";
 import Home from "./pages/Home";
 import About from "./pages/About";
-import Trending from "./components/Trending/Trending";
+import Login from "./pages/Login";
+
+
+
 
 function App() {
   let Component;
@@ -15,14 +16,17 @@ function App() {
     case "/about":
       Component = About;
       break;
+    case "/login":
+      Component = Login;
+      break;
       default:
         Component = null;
+    
   }
 
   return (
     <div className="App">
-      <Navbar />
-      <Pages />
+      <Component />
     </div>
   );
 }
