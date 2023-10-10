@@ -81,7 +81,7 @@ button:hover {
     /*115 × 23*/
     width: calc(115px / 6);
     height: 23px;
-    background:url(assets/maiSprite.png);
+    background:url(src/assets/maiSprite.png);
     animation: animate 0.4s steps(6) infinite;
     transform: scale(2);
 }
