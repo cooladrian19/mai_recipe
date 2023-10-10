@@ -1,0 +1,51 @@
+
+.detail-header {
+    background-color: #e0b9bfca;
+    display: flex;
+    overflow: hidden;
+    position: relative;
+    
+}
+.detail-img {
+    background-color: rgb(165, 190, 182);
+    width: 20rem;
+}
+.detail-img img {
+    object-fit: contain;
+    max-height: 100%;
+    max-width: 100%;
+}
+.detail-background {
+    background-color: antiquewhite;
+    width: 100%;
+}
+.detail-background img {
+    filter: blur(3px);
+    object-fit: cover;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}
+.detail-body {
+    padding: 4rem 10rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+.detail-ingredients {
+    background-color: beige;
+    display: flex;
+    flex-direction: column;
+}
+.detail-ingredients ul{
+   padding: 1rem 2rem;
+}
+.detail-ingredients li{
+
+}
+.detail-procedure {
+    background-color: rgb(170, 170, 136);
+}
+.detail-procedure p {
+    padding: 1rem 2rem;
+}

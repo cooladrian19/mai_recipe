@@ -49,8 +49,8 @@ export default function Trending() {
     {
       title: "Mock Recipe 3",
       image: mockImage3,
-    },
-    {
+      },
+      {
       title: "Mock Recipe 4",
       image: mockImage4,
     },
@@ -97,8 +97,22 @@ export default function Trending() {
           options={{
             perPage: 4,
             arrows: false,
-            gap: "5rem",
+            gap: "4rem",
             
+            breakpoints: {
+              1024: {
+                perPage: 3,
+               
+              },
+              767: {
+                perPage: 2,
+            
+              },
+              640: {
+                perPage: 1,
+          
+              },
+            }
             
           }}
         >

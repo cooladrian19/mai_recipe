@@ -4,6 +4,7 @@ import Home from "./pages/Home";
 import About from "./pages/About";
 import Login from "./pages/Login";
 import Profile from "./pages/Profile"
+import Details from "./pages/Details"
 
 
 
@@ -22,9 +23,11 @@ function App() {
     case "/profile":
       Component = Profile;
       break;
+    case "/details":
+      Component = Details;
+      break;
       default:
         Component = null;
-    
   }
 
   return (
