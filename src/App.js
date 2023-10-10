@@ -3,7 +3,7 @@ import "./App.css";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Login from "./pages/Login";
-
+import Profile from "./pages/Profile"
 
 
 
@@ -18,6 +18,9 @@ function App() {
       break;
     case "/login":
       Component = Login;
+      break;
+    case "/profile":
+      Component = Profile;
       break;
       default:
         Component = null;

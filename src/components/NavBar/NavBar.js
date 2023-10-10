@@ -2,7 +2,7 @@ import React from "react";
 import SearchIcon from "../../assets/recipeIcon.png";
 import "./style.css";
 
-export default function Navbar() {
+export default function NavBar() {
   return (
     <div className="nav-container">
       <a className="web-title" href="/">
