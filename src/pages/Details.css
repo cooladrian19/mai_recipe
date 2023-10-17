@@ -1,51 +1,76 @@
-
-.detail-header {
-    background-color: #e0b9bfca;
-    display: flex;
-    overflow: hidden;
-    position: relative;
-    
-}
-.detail-img {
-    background-color: rgb(165, 190, 182);
-    width: 20rem;
-}
-.detail-img img {
-    object-fit: contain;
-    max-height: 100%;
-    max-width: 100%;
-}
-.detail-background {
-    background-color: antiquewhite;
-    width: 100%;
-}
-.detail-background img {
-    filter: blur(3px);
-    object-fit: cover;
-    position: absolute;
-    height: 100%;
-    width: 100%;
-}
-.detail-body {
-    padding: 4rem 10rem;
+.detail-container {
+    padding: 6rem 20rem;
+    background-color: rgb(253, 229, 229);
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    background-image: "/assets/mock/background1.png";
+}
+
+.top-detail-container {
+    display: flex;
     gap: 2rem;
 }
-.detail-ingredients {
-    background-color: beige;
-    display: flex;
-    flex-direction: column;
-}
-.detail-ingredients ul{
-   padding: 1rem 2rem;
-}
-.detail-ingredients li{
+.detail-img {
+    width: 400px;
+    height: 300px;
+    text-align: center;
+    border: solid;
+    border-radius: 2em;
+    border-color: rgb(95, 95, 95);
+    box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
+    overflow: hidden;
 
 }
-.detail-procedure {
-    background-color: rgb(170, 170, 136);
+.detail-img img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
 }
-.detail-procedure p {
-    padding: 1rem 2rem;
+.detail-ingredients {
+    display: flex;
+    padding: 2rem;
+    background-color: rgb(255, 245, 214);
+    justify-content: center;
+    flex-direction: column;
+    border-style: solid;
+    border-radius: 1rem;
+    border-color: rgb(136, 136, 136);
+    box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
+    border-width: 1.8px;
+    gap: 1.2rem;
+}
+.detail-ingredients h3 {
+    font-family: 'SF Pixelate', sans-serif;
+    
+}
+.detail-ingredients ul {
+    margin-left: 1rem;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 400px;
+    height: 200px;
+}
+
+.detail-procedures {
+    display: flex;
+    padding: 2rem;
+    width: 50%;
+    background-color: rgb(235, 227, 255);
+    justify-content: center;
+    flex-direction: column;
+    border-style: solid;
+    border-color: rgb(136, 136, 136);
+    border-radius: 1rem;
+    border-width: 1.8px;
+    gap: 1.2rem;
+    box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
+}
+.detail-procedures h3 {
+    font-family: 'SF Pixelate', sans-serif;
+    font-weight: 700;
+    
 }

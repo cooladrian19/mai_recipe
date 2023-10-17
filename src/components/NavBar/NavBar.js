@@ -13,18 +13,16 @@ export default function NavBar() {
       </a>
       <div className="right-nav">
         <div className="search">
-          <div>
-            <a className="hover-line" href="/search">
-              <img src={SearchIcon} alt="Search Icon" /> search recipes
+            <a className="hover-line" href="/searchIngredients">
+              <img src={SearchIcon} alt="Search Icon" /> search by ingredients
             </a>
-          </div>
         </div>
         <div className="about">
           <a className="hover-line" href="/about">
             about
           </a>
         </div>
-        <a href="/" className="profile-circle"></a>
+        <a href="/profile" className="profile-circle"></a>
       </div>
     </div>
   );

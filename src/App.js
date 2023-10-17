@@ -1,40 +1,39 @@
 import React from "react";
 import "./App.css";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import About from "./pages/About";
-import Login from "./pages/Login";
-import Profile from "./pages/Profile"
-import Details from "./pages/Details"
+import Auth from "./pages/Auth";
+import Profile from "./pages/Profile";
+import Details from "./pages/Details";
+import Ingredients from "./pages/Ingredients";
+import NoPage from "./pages/NoPage";
+import { AuthProvider } from "./contexts/AuthContext";
 
 
 
 function App() {
-  let Component;
-  switch (window.location.pathname) {
-    case "/":
-      Component = Home;
-      break;
-    case "/about":
-      Component = About;
-      break;
-    case "/login":
-      Component = Login;
-      break;
-    case "/profile":
-      Component = Profile;
-      break;
-    case "/details":
-      Component = Details;
-      break;
-      default:
-        Component = null;
-  }
 
   return (
-    <div className="App">
-      <Component />
+      <div className="App">
+      <BrowserRouter>
+      <Routes>
+        <Route index element={<Home />} />
+        <Route path="/home" element={<Home />} />
+        <Route path="/about" element = {<About />} />
+        <Route path="/auth" element = {<Auth />} />
+        <Route path="/profile" element = {<Profile />} />
+        <Route path="/details" element = {<Details />} />
+        <Route path="/searchIngredients" element = {<Ingredients />} />
+        <Route path="*" element = {<NoPage />} />
+      </Routes>
+      </BrowserRouter>
+      
     </div>
+
+    
   );
 }
 
 export default App;
+

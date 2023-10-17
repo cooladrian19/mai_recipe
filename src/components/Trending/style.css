@@ -1,53 +1,81 @@
-.trending {
-    padding: 3rem 10rem;
-}
 .trending-container {
-    padding: 2rem 20rem;
+    margin: 1rem 1rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
-}
+    align-items: center;
+    
+
+}   
 .trend-title {
+    display: flex;
     font-weight: bold;
+    padding: 1rem;
+    width: 65%;
+
+}
+.splide-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 1rem;
+    width: 65%;
+    
 }
 .trend-card {
-    background-color: rgb(255, 243, 243);
+    background-color: #ffffff;
     display: flex;
     flex-direction: column;
     align-self: center;
-    margin: 2rem 0rem;
-    height: 12rem;
-    width: 10rem;
-    border-radius: 2rem;
-    overflow: hidden;
-    position: relative;
-    gap: 1rem;
+    text-align: center;
+    width: 275px;
+    height: 300px;
+    padding: 1rem;
+    border: solid;
+    border-radius: 1.5rem;
+    border-width: 2px;
+    border-color: rgb(87, 74, 80);
+    gap: 0.8rem;
     text-decoration: none !important;
     transition-duration: 0.05s;
+
 }
 .trend-card:hover {
     border: solid;
-    border-width: 4px;
-    border-color:  #a16376;
+    border-color: #a16376;
 }
 .trend-card-img {
-    height: 10rem;
-    position: relative;
-    border-top-right-radius: 2rem;
-    border-top-left-radius: 2rem;
+    overflow: hidden;
+    margin: 1px;
+    height: 65%;
+    border: solid;
+    border-width: 2px;
+    border-radius: 0.5em;
     
 }
 .trend-card-img img {
-    position: absolute;
     object-fit: cover;
     left: 0;
     width: 100%;
     height: 100%;
 
 }
-.trend-card p {
+.trend-card-details {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 1rem;
+    flex-direction: column;
+}
+.trend-card-details p {
+    display: flex;
+    justify-content: start;
+    text-align: center;
+
+}
+@media (max-width: 768px) {
+   
+}
+@media (max-width: 1343px) {
+    .trend-title {
+        justify-content: center;
+    }
 }
