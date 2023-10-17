@@ -3,6 +3,7 @@
 .nav-container {
     background-color: #fdf7f1;
     position: sticky;
+    z-index: 1000;
     top: 0;
     display: flex;
     flex-direction: row;
@@ -137,6 +138,9 @@ a::before, a::after {
     body {
         font-size: 0.9rem;
     }
+    .nav-container {
+        padding: 0.6rem 1rem;
+    }
     .web-name {
         font-size: 1.5rem;
     }
@@ -166,6 +170,9 @@ a::before, a::after {
 @media (max-width: 500px) {
     body {
         font-size: .7rem;
+    }
+    .nav-container {
+        padding: 0.4rem 1rem;
     }
     .web-name {
         font-size: 1rem;

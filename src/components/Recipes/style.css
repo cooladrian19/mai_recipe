@@ -10,7 +10,7 @@
 .recipes-wrapper {
     display: flex;
     justify-content: center;
-    background-color: antiquewhite;
+   
 }
 
 
@@ -124,5 +124,9 @@
     .recipes-container {
         width: 100%;
     }
+    
+}
+
+@media (max-width: 500px) { 
     
 }
