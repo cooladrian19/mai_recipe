@@ -4,7 +4,7 @@ import "./style.css";
 
 export default function Recipes({ title, image, calories, type, time }) {
   return (
-    <div className="recipes-card">
+        <div className="recipes-card">
         <div className="recipes-img-contain">
           <img src={image} alt={title}></img>
         </div>
@@ -23,5 +23,6 @@ export default function Recipes({ title, image, calories, type, time }) {
       </div>
 
     </div>
+    
   );
 }

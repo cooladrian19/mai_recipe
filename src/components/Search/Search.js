@@ -71,21 +71,23 @@ export default function Search() {
       </div>
 
       {/* DISPLAY RECIPES */}
-      <div className="recipes-container">
-        {recipesFetched && recipes.length === 0 ? (
-          <p>No recipes found. Try a different search.</p>
-        ) : (
-          recipes.map((recipe) => (
-            <Recipes
-              id={recipe.recipe.label}
-              image={recipe.recipe.image}
-              title={recipe.recipe.label}
-              calories={Math.floor(recipe.recipe.calories)}
-              type={recipe.recipe.cuisineType}
-              time={recipe.recipe.totalTime}
-            />
-          ))
-        )}
+      <div className="recipes-wrapper">
+        <div className="recipes-container">
+          {recipesFetched && recipes.length === 0 ? (
+            <p>No recipes found. Try a different search.</p>
+          ) : (
+            recipes.map((recipe) => (
+              <Recipes
+                id={recipe.recipe.label}
+                image={recipe.recipe.image}
+                title={recipe.recipe.label}
+                calories={Math.floor(recipe.recipe.calories)}
+                type={recipe.recipe.cuisineType}
+                time={recipe.recipe.totalTime}
+              />
+            ))
+          )}
+        </div>
       </div>
     </div>
   );

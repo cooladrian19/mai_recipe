@@ -26,8 +26,6 @@
 
 
 
-
-
 /** BODY **/
 .ingredient-body {
     display: flex;
@@ -88,6 +86,7 @@
     background: #e8abc3;
     transition: background ease 0.2s;
 }
+
 .tabs .tab {
     order: 99; 
     flex-grow: 1;
