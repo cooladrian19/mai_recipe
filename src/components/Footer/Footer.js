@@ -12,14 +12,14 @@ export default function Footer() {
                 <h2>mai's recipe</h2>
             </a>
             <div className="footer-info">
-                <div className="github-container">
+                <div className="github-container" >
                     <a href="https://github.com/cooladrian19" target="_blank" className="hover-line">
-                        <img className= "github-logo" src={githubLogo} alt="GitHub" /> GitHub
+                        <img className= "github-logo" src={githubLogo} alt="GitHub" /> github
                     </a>
                 </div>
                 <div className="linkedin-container">
                     <a href="https://www.linkedin.com/in/nguyena270" target="_blank" className="hover-line">
-                        <img className="linkedin-logo" src={linkedinLogo}alt="LinkedIn" /> LinkedIn
+                        <img className="linkedin-logo" src={linkedinLogo}alt="LinkedIn" /> linkedin
                     </a>
                 </div>
                 <a href="/about" className="hover-line">about</a>

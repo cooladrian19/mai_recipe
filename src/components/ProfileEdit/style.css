@@ -1,0 +1,36 @@
+.profile-container {
+    padding: 10rem 7rem;
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.profile-img {
+    color: transparent;
+  transition: all .3s ease;
+  position: relative;
+  transition: all .3s ease;
+}
+.profile-edit-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+.profile-row {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap: 1rem;
+}
+.profile-row input {
+    border-radius: 2rem;
+    padding: 0.3rem 1rem;
+    transition-duration: 0.5s;
+
+}
+.profile-row input:focus {
+    outline-color: #e8abc3;
+
+}

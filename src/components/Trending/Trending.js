@@ -4,15 +4,13 @@ import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/react-splide/css";
 import "./style.css";
 
-// mock images 
-import mockImage1 from '../../assets/mock/mock-image-1.jpg';
-import mockImage2 from '../../assets/mock/mock-image-2.jpg';
-import mockImage3 from '../../assets/mock/mock-image-3.jpg';
-import mockImage4 from '../../assets/mock/mock-image-4.jpg';
-import mockImage5 from '../../assets/mock/mock-image-5.jpg';
-import mockImage6 from '../../assets/mock/mock-image-6.jpg';
-
-
+// mock images
+import mockImage1 from "../../assets/mock/mock-image-1.jpg";
+import mockImage2 from "../../assets/mock/mock-image-2.jpg";
+import mockImage3 from "../../assets/mock/mock-image-3.jpg";
+import mockImage4 from "../../assets/mock/mock-image-4.jpg";
+import mockImage5 from "../../assets/mock/mock-image-5.jpg";
+import mockImage6 from "../../assets/mock/mock-image-6.jpg";
 
 export default function Trending() {
   {
@@ -49,8 +47,8 @@ export default function Trending() {
     {
       title: "Mock Recipe 3",
       image: mockImage3,
-      },
-      {
+    },
+    {
       title: "Mock Recipe 4",
       image: mockImage4,
     },
@@ -65,9 +63,9 @@ export default function Trending() {
   ];
 
   return (
-    <div className="trending">
+
       <div className="trending-container">
-        <h1 className="trend-title">Trending</h1>
+        <h1 className="trend-title  ">Trending</h1>
 
         {/*
         <Splide
@@ -90,53 +88,62 @@ export default function Trending() {
         </Splide>
         */}
 
+        <div className="splide-container">
+          {/* mockkkkkkkkkk */}
+          <Splide
+            options={{
+              perPage: 5,
+              arrows: false,
+              gap: "1rem",
+              height: 350,
+              width: "100%",
+              
+
+              breakpoints: {
+                2950: {
+                  perPage: 4,
+                  
+                },
+                1777: {
+                  perPage: 3,
+
+                },
+                1343: {
+                  perPage: 2,
+                },
+                900: {
+                  destroy: true,
+
+                },
 
 
-  {/* mockkkkkkkkkk */}
-        <Splide 
-          options={{
-            perPage: 4,
-            arrows: false,
-            gap: "4rem",
-            
-            breakpoints: {
-              1024: {
-                perPage: 3,
-               
               },
-              767: {
-                perPage: 2,
-            
-              },
-              640: {
-                perPage: 1,
-          
-              },
-            }
-            
-          }}
-        >
-          {mockTrending.map((recipe, index) => (
-            <SplideSlide key={index}>
-              <a className="trend-card" href="/">
-                <div className="trend-card-img">
-                  <img src={recipe.image} alt={recipe.title} />
-                </div>
-                <p>{recipe.title}</p>
-              </a>
-            </SplideSlide>
-          ))}
-        </Splide>
+            }}
+          >
+            {mockTrending.map((recipe, index) => (
+              <SplideSlide key={index} >
+                <a className="trend-card" href="/">
+                  <div className="trend-card-img">
+                    <img src={recipe.image} alt={recipe.title} />
+                  </div>
+                  <div className="trend-card-details">
+                    <p>{recipe.title}</p>
+                    <p>calories</p>
+                  </div>
+                  
+                </a>
+              </SplideSlide>
+            ))}
+          </Splide>
 
-  {/* mockkkkkkkkkk */}
-
+          {/* mockkkkkkkkkk */}
+        </div>
       </div>
-    </div>
   );
 }
 
 const Wrapper = styled.div`
-  margin: 4rem 0rem;
+  margin: 12rem 0rem;
 `;
 const Card = styled.div`
   margin: 4rem 0rem;
