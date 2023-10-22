@@ -80,7 +80,7 @@
     justify-content: space-evenly;
     align-items: center;
     gap: 1.3rem;
-    margin-top: 5px;
+    margin-top: 6px;
 }
 .search {
     display: flex;
@@ -135,9 +135,7 @@ a::before, a::after {
 
 /* MEDIA SIZING */
 @media (max-width: 768px) {
-    body {
-        font-size: 0.9rem;
-    }
+  
     .nav-container {
         padding: 0.6rem 1rem;
     }
@@ -168,14 +166,15 @@ a::before, a::after {
     
 }
 @media (max-width: 500px) {
-    body {
-        font-size: .7rem;
-    }
+  
     .nav-container {
         padding: 0.4rem 1rem;
     }
+    .web-title {
+        gap: 0rem;
+    }
     .web-name {
-        font-size: 1rem;
+        font-size: 1.1rem;
     }
     .profile-circle {
         padding: 0.7rem;
@@ -188,7 +187,7 @@ a::before, a::after {
     }
     .right-nav {
         gap: 0.6rem;
-        font-size: 0.6rem;
+        font-size: 0.8rem;
     }
     .right-mid-nav {
         gap:0.6rem;

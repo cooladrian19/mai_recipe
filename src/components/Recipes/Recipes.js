@@ -2,7 +2,7 @@ import React from "react";
 import "./style.css";
 
 
-export default function Recipes({ title, image, calories, type, time }) {
+export default function Recipes({ title, image, calories, ingredients, type, time }) {
   return (
         <div className="recipes-card">
         <div className="recipes-img-contain">
@@ -10,8 +10,17 @@ export default function Recipes({ title, image, calories, type, time }) {
         </div>
         <div className="recipes-details-contain">
           <h4>{title}</h4>
-          <p> <span>cuisine type:</span> {type}</p>
+          <p> <span>meal type:</span> {type}</p>
           <p> <span>calories:</span> {calories}</p>   
+          <p> <span>ingredients:</span>
+          <ul>
+            <li>
+              {ingredients.map((ingredient, index) => (
+                <p key={index}>{ingredient.food}{index < ingredients.length - 1 ? ', ' : ''}</p>
+              ))}
+            </li>
+          </ul>
+        </p>
         </div>
 
       <div className="recipes-card-bottom">

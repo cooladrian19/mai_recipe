@@ -2,6 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import "./style.css";
 import Recipes from "../Recipes/Recipes";
+import Ingredients from "../../pages/Ingredients";
 
 export default function Search() {
   const [recipes, setRecipes] = useState([]);
@@ -9,6 +10,7 @@ export default function Search() {
   const [query, setQuery] = useState("");
   const [fetchRecipes, setFetchRecipes] = useState(false); // New state to control when to fetch recipes
   const [recipesFetched, setRecipesFetched] = useState(false); // New state to track if recipes have been fetched
+
 
   // Run API function only when fetchRecipes is true
   useEffect(() => {
@@ -38,17 +40,18 @@ export default function Search() {
   const updateSearch = (e) => {
     setSearch(e.target.value);
   };
-
   const getSearch = (e) => {
     e.preventDefault();
     setQuery(search);
     setSearch("");
     setFetchRecipes(true); // Set fetchRecipes to true when searching
+   
   };
+
 
   return (
     <div className="container">
-      {/* SEARCH */}
+      {/* SEARCH BY NAME */}
       <label htmlFor="searchRecipe" className="search-label">
         search by name
       </label>
@@ -82,7 +85,9 @@ export default function Search() {
                 image={recipe.recipe.image}
                 title={recipe.recipe.label}
                 calories={Math.floor(recipe.recipe.calories)}
-                type={recipe.recipe.cuisineType}
+                
+                ingredients={recipe.recipe.ingredients}
+                type={recipe.recipe.mealType}
                 time={recipe.recipe.totalTime}
               />
             ))

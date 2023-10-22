@@ -18,9 +18,9 @@ export default function Details() {
       <Navbar />
       {/* DETAIL HEADER */}
 
-      {mockTrending.map((recipe, index) => (
-        <div className="detail-container">
-          <div className="top-detail-container">
+      <div className="detail-wrapper">
+        {mockTrending.map((recipe, index) => (
+          <div className="detail-container">
             <div className="detail-img">
               <img src={recipe.image} alt={recipe.title} />
             </div>
@@ -51,25 +51,23 @@ export default function Details() {
                 <li>meat</li>
               </ul>
             </div>
-          </div>
-
 
             <div className="detail-procedures">
               <h3>procedures</h3>
               <ol>
-                <li>1: asdsadsadasd</li>
-                <li>1: asdsadsadasd</li>
-                <li>1: asdsadsadasd</li>
-                <li>1: asdsadsadasd</li>
-                <li>1: asdsadsadasd</li>
-                <li>1: asdsadsadasd</li>
+                <li>asdsadsadasd</li>
+                <li>asdsadsadasd</li>
+                <li>asdsadsadasd</li>
+                <li>asdsadsadasd</li>
+                <li>asdsadsadasd</li>
+                <li>asdsadsadasd</li>
               </ol>
             </div>
-  
-        </div>
-      ))}
+          </div>
+        ))}
 
-      {/* DETAIL BODY */}
+        {/* DETAIL BODY */}
+      </div>
 
       <Footer />
     </div>

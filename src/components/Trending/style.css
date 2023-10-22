@@ -64,15 +64,16 @@
 }
 .trend-card-details p {
     display: flex;
-    justify-content: start;
+    justify-content: flex-start;
     text-align: center;
 
 }
-@media (max-width: 768px) {
-   
-}
+
 @media (max-width: 1343px) {
     .trend-title {
         justify-content: center;
     }
+}
+@media (max-width: 768px) {
+   
 }

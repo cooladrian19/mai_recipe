@@ -10,7 +10,6 @@
 .recipes-wrapper {
     display: flex;
     justify-content: center;
-   
 }
 
 
@@ -19,8 +18,8 @@
     display: flex;
     flex-direction: column; 
     justify-content: center;
-    width: 325px;
-    height: 400px;
+    width: 425px;
+    height: 450px;
     border: solid;
     border-width: 2px;
     border-color:rgb(87, 74, 80);
@@ -60,12 +59,18 @@
     font-size: 1rem;
     color:rgb(83, 79, 82);
 }
+.recipes-details-contain li {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    padding-top: 5px;
+}
 .recipes-details-contain span {
     font-weight: 800;
 }
 .recipes-card-bottom{
     display: flex;
-    justify-content: end;
+    justify-content: flex-end;
     align-items: center;
     padding-top: 1.5rem;
     padding-bottom: 0.5rem;
@@ -128,5 +133,6 @@
 }
 
 @media (max-width: 500px) { 
+    
     
 }

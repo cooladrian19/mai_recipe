@@ -28,11 +28,12 @@
 
 /** BODY **/
 .ingredient-body {
-    display: flex;
-    justify-content: center;
     align-items: center;
-    flex-wrap: wrap;
+    padding: 1rem;
 }
+
+
+
 
 
 /** LEFT TABS **/
@@ -43,8 +44,8 @@
     align-items: center;
     padding: 2rem 4rem;
     flex-direction: column;
-    width: 45%;
-    gap: 1rem;
+    gap: 1.5rem;
+    
 }
 .tab-container span {
     display: flex;
@@ -53,8 +54,8 @@
     align-items: center;
     line-height: 1.5rem;
     text-align: center;
-    width: 65%;
-    padding: 1rem;
+    width: 550px;
+    padding: 0.7rem;
     font-size: 1.5rem;
     color: #382d2d;
     background-color: #9b90988a;
@@ -64,6 +65,7 @@
 
 }
  .tabs {
+    width: 50%;
 	display: flex;
 	flex-wrap: wrap;
     justify-content: center;
@@ -117,6 +119,13 @@
 }
 
 
+
+
+
+
+
+
+
 /** LEFT INSTRUCTIONS **/
 .search-instructions {
     display: flex;
@@ -161,16 +170,15 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    grid-area: 1 / 2 / 4 / 3;
-    
+
 }   
 
 .side-img-container {
     display: flex;
-    margin: 1rem 9rem 2rem;
     width: 550px;
-    height: 600px;
+    height: 550px;
     overflow: hidden;
+ 
 }
 .side-img-container img{
     object-fit: cover;
@@ -178,6 +186,8 @@
     width: 100%;
     height: 100%;
 }
+
+
 
 
 
@@ -251,19 +261,60 @@ ul.ks-cboxtags li input[type="checkbox"] {
 
 @media (max-width: 1523px) {
     .tab-container {
-        padding: 2rem 1rem;
-        width: 100%;
-   
+        padding: 2rem;
     }
-    .tab-container span {
-        width: 100%;   
+    .tabs {
+        width: 65%;
+    }
+    .ingredient-recipes-wrap {
+        width: 80%;
     }
 }
 
 @media (max-width: 820px) {
+    .tab-container {
+        padding: 1rem;
+        
+    }
+    .tabs {
+        width: 90%;
+    }
     .side-img-container {
         width:400px;
     height: 400px;
     }
+    .tab-container span {
+        width: 75%;   
+        font-size: 1rem;
+        padding: 0.75rem;
+    }
 
 }
+
+
+@media (max-width: 540px) {
+    
+    .tab-container {
+        width: 100%;
+        padding: 0rem;
+    }
+    .tabs {
+        width: 100%;
+    }
+    .side-img-container {
+        width:400px;
+        height: 400px;
+    }
+    .tab-container span {
+        width: 75%;   
+        font-size: 1rem;
+        padding: 0.75rem;
+    }
+    .side-img-container {
+        width: 80%;
+        height: 80%;
+     
+    }
+
+}
+
