@@ -11,6 +11,7 @@ export default function Ingredients() {
   const [selectedIngredients, setSelectedIngredients] = useState([]);
   const [fetchRecipes, setFetchRecipes] = useState(false);
   const [recipesFetched, setRecipesFetched] = useState(false);
+  const [ingredientHash, setIngredientHash] = useState({});
 
   // Initialize ingredient hash when selectedIngredients change
   useEffect(() => {
