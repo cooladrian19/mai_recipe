@@ -18,19 +18,22 @@
     display: flex;
     flex-direction: column; 
     justify-content: center;
-    width: 425px;
-    height: 450px;
+    width: 350px;
+    height: 500px;
     border: solid;
     border-width: 2px;
     border-color:rgb(87, 74, 80);
     border-radius: 1.5em;
     gap: 0.5rem;
     overflow: hidden;
+    cursor: pointer;
 }
 
 .recipes-img-contain {
     margin: 1rem;
     border: solid;
+    width: 310px;
+    height: 300px;
     border-width: 2px;
     border-color: rgb(87, 74, 80);
     border-radius: 0.8rem;
