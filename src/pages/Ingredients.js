@@ -5,22 +5,25 @@ import "./Ingredients.css";
 import SideImg from "../assets/cooking.png";
 import Recipes from "../components/Recipes/Recipes";
 
-
 export default function Ingredients() {
   const [recipes, setRecipes] = useState([]);
   const [selectedIngredients, setSelectedIngredients] = useState([]);
   const [fetchRecipes, setFetchRecipes] = useState(false);
   const [recipesFetched, setRecipesFetched] = useState(false);
   const [ingredientHash, setIngredientHash] = useState({});
+  const [includeCommonIngredients, setIncludeCommonIngredients] = useState(false);
+
 
   // Initialize ingredient hash when selectedIngredients change
   useEffect(() => {
     const hash = {};
     selectedIngredients.forEach((ingredient) => {
-      hash[ingredient] = true;
+      const normalizedIngredient = ingredient.toLowerCase().replace(/-/g, ' ' ).trim();
+      hash[normalizedIngredient] = true;
     });
     setIngredientHash(hash);
   }, [selectedIngredients]);
+
 
   // Run API function only when fetchRecipes is true
   useEffect(() => {
@@ -30,16 +33,38 @@ export default function Ingredients() {
     }
   }, [fetchRecipes, selectedIngredients]);
 
+
+  useEffect(() => {
+    if (includeCommonIngredients) {
+      // Add common ingredients to the list if they're not already included
+      const updatedIngredients = [...new Set([...selectedIngredients, ...commonIngredients])];
+      setSelectedIngredients(updatedIngredients);
+    } else {
+      // Remove common ingredients from the list if they are included
+      const filteredIngredients = selectedIngredients.filter(ingredient => !commonIngredients.includes(ingredient));
+      setSelectedIngredients(filteredIngredients);
+    }
+  }, [includeCommonIngredients]);
+  
+  // Make sure to reset the common ingredients when the selectedIngredients change manually
+  useEffect(() => {
+    if (!selectedIngredients.some(ingredient => commonIngredients.includes(ingredient))) {
+      setIncludeCommonIngredients(false);
+    }
+  }, [selectedIngredients]);
+
+
   const APP_ID = "3b7d48b2";
   const APP_KEY = "62689d9882d65ab7e7833e831da0f798";
   const fetchEdamamRecipesByIngredient = async (ingredients) => {
-    const ingredientList = ingredients.join(" ");
-    const apiUrl = `https://api.edamam.com/search?q=${ingredientList}&app_id=${APP_ID}&app_key=${APP_KEY}`;
+
+    const firstIngredient = ingredients[0];
+    const apiUrl = `https://api.edamam.com/search?q=${firstIngredient}&app_id=${APP_ID}&app_key=${APP_KEY}&to=25`;
 
     try {
       const response = await fetch(apiUrl);
       const data = await response.json();
-
+      console.log(data);
       setRecipes(data.hits);
       setRecipesFetched(true);
     } catch (error) {
@@ -47,51 +72,53 @@ export default function Ingredients() {
     }
   };
 
-  const getIngredientCombinations = () => {
-    // Generate all possible combinations of selected ingredients
-    const combinations = [];
-    for (let i = 0; i < selectedIngredients.length; i++) {
-      for (let j = i + 1; j <= selectedIngredients.length; j++) {
-        const subset = selectedIngredients.slice(i, j);
-        combinations.push(subset);
-      }
-    }
-    return combinations;
-  };
   const isRecipeMatching = (recipeIngredients) => {
     if (!Array.isArray(recipeIngredients)) {
+      console.error("recipeIngredients is not an array", recipeIngredients);
       return false;
     }
 
-    // Check if any combination of selected ingredients is present in the recipe
-    const ingredientCombinations = getIngredientCombinations();
-    for (const combination of ingredientCombinations) {
-      const hasAllIngredients = combination.every((ingredient) =>
-        recipeIngredients.some(
-          (ingredientObj) => ingredientObj.food === ingredient
-        )
-      );
-      if (hasAllIngredients) {
-        return true;
+    // Log the recipe ingredients to see if they are in the expected format
+    console.log("Checking recipe with ingredients:", recipeIngredients);
+
+    return recipeIngredients.every((ingredientObj) => {
+      const normalizedIngredient = ingredientObj.food.toLowerCase().replace(/-/g, ' ' ).trim();
+      const ingredientExists = ingredientHash[normalizedIngredient];
+      if (!ingredientExists) {
+        console.log(`Ingredient not found: ${ingredientObj.food}`);
       }
-    }
-    return false;
+      else {
+        console.log(`Ingredientsss  found: ${ingredientObj.food}`);
+      }
+      return ingredientExists;
+    });
   };
 
   // Function to update selected ingredients
   const handleIngredientSelection = (e) => {
     const ingredient = e.target.value;
+    const isCategory = ingredient in ingredientCategoryMap;
+  
     if (e.target.checked) {
-      // Add ingredient to the selected list
-      setSelectedIngredients([...selectedIngredients, ingredient]);
+      let newIngredients;
+      if (isCategory) {
+        // Add all specific ingredients for the category
+        newIngredients = [...selectedIngredients, ...ingredientCategoryMap[ingredient]];
+      } else {
+        // Add just this specific ingredient
+        newIngredients = [...selectedIngredients, ingredient];
+      }
+      setSelectedIngredients(Array.from(new Set(newIngredients))); // Use Set to remove duplicates
     } else {
-      // Remove ingredient from the selected list
-      setSelectedIngredients(
-        selectedIngredients.filter((item) => item !== ingredient)
-      );
+      if (isCategory) {
+        // Remove all specific ingredients for the category
+        setSelectedIngredients(selectedIngredients.filter(item => !ingredientCategoryMap[ingredient].includes(item)));
+      } else {
+        // Remove just this specific ingredient
+        setSelectedIngredients(selectedIngredients.filter(item => item !== ingredient));
+      }
     }
   };
-
 
   // Function to trigger the search
   const performIngredientSearch = (e) => {
@@ -99,6 +126,16 @@ export default function Ingredients() {
     console.log("Selected Ingredients:", selectedIngredients);
     e.preventDefault();
   };
+
+  const commonIngredients = ['black pepper', 'white pepper', 'water', 'butter', 'chicken seasoning', 'beef seasoning', 'salt', 'sugar'];
+
+  const ingredientCategoryMap = {
+    oil: ['olive oil', 'extra virgin olive oil', 'vegetable oil'],
+    chicken: ['chicken wings', 'chicken breasts', 'chicken legs'],
+
+  };
+  
+
 
   return (
     <div className="footer-margin">
@@ -119,16 +156,7 @@ export default function Ingredients() {
             <label htmlFor="tabone">Protien</label>
             <div class="tab">
               <ul class="ks-cboxtags">
-                <li>
-                  <input
-                    id="duck"
-                    type="checkbox"
-                    value="duck"
-                    onChange={handleIngredientSelection}
-                  />
-                  <label for="duck">Duck</label>
-                </li>
-                <li>
+              <li>
                   <input
                     id="beef"
                     type="checkbox"
@@ -139,12 +167,30 @@ export default function Ingredients() {
                 </li>
                 <li>
                   <input
-                    id="ground-beef"
+                    id="chicken"
                     type="checkbox"
-                    value="ground-beef"
+                    value="chicken"
                     onChange={handleIngredientSelection}
                   />
-                  <label for="ground-beef">Ground Beef</label>
+                  <label for="chickem">chicken</label>
+                </li>
+                <li>
+                  <input
+                    id="ground beef"
+                    type="checkbox"
+                    value="ground beef"
+                    onChange={handleIngredientSelection}
+                  />
+                  <label for="ground beef">Ground Beef</label>
+                </li>
+                <li>
+                  <input
+                    id="pork"
+                    type="checkbox"
+                    value="pork"
+                    onChange={handleIngredientSelection}
+                  />
+                  <label for="pork">Pork</label>
                 </li>
                 <li>
                   <input
@@ -157,13 +203,13 @@ export default function Ingredients() {
                 </li>
                 <li>
                   <input
-                    id="pork"
+                    id="duck"
                     type="checkbox"
-                    value="pork"
+                    value="duck"
                     onChange={handleIngredientSelection}
                   />
-                  <label for="pork">Pork</label>
-                </li>
+                  <label for="duck">Duck</label>
+                </li>    
                 <li>
                   <input
                     id="lamb"
@@ -513,7 +559,7 @@ export default function Ingredients() {
               <ul class="ks-cboxtags">
                 <li>
                   <input
-                    id="banana"
+                    id="Banana"
                     type="checkbox"
                     value="banana"
                     onChange={handleIngredientSelection}
@@ -725,6 +771,15 @@ export default function Ingredients() {
             <label htmlFor="tabfour">Dairy</label>
             <div class="tab">
               <ul class="ks-cboxtags">
+                <li>
+                  <input
+                    id="Egg"
+                    type="checkbox"
+                    value="egg"
+                    onChange={handleIngredientSelection}
+                  />
+                  <label for="egg">Eggs</label>
+                </li>
                 <li>
                   <input
                     id="milk"
@@ -1108,6 +1163,15 @@ export default function Ingredients() {
                   />
                   <label for="bread-crumbs">Bread Crumbs</label>
                 </li>
+                <li>
+                  <input
+                    id="Walnuts"
+                    type="checkbox"
+                    value="walnuts"
+                    onChange={handleIngredientSelection}
+                  />
+                  <label for="walnuts">Walnuts</label>
+                </li>
               </ul>
             </div>
 
@@ -1126,12 +1190,12 @@ export default function Ingredients() {
                 </li>
                 <li>
                   <input
-                    id="pepper"
+                    id="black pepper"
                     type="checkbox"
-                    value="pepper"
+                    value="black pepper"
                     onChange={handleIngredientSelection}
                   />
-                  <label for="pepper">Pepper</label>
+                  <label for="black pepper">black pepper</label>
                 </li>
                 <li>
                   <input
@@ -1153,12 +1217,12 @@ export default function Ingredients() {
                 </li>
                 <li>
                   <input
-                    id="cayenne-pepper"
+                    id="cayenne pepper"
                     type="checkbox"
-                    value="cayenne-pepper"
+                    value="cayenne pepper"
                     onChange={handleIngredientSelection}
                   />
-                  <label for="cayenne-pepper">Cayenne Pepper</label>
+                  <label for="cayenne pepper">Cayenne Pepper</label>
                 </li>
                 <li>
                   <input
@@ -1281,12 +1345,11 @@ export default function Ingredients() {
             </div>
           </div>
 
-          <button
-            onClick={performIngredientSearch}
-            className="search-recipe-button"
-          >
-            search
-          </button>
+          
+          <label for="select-essential">select all essentials</label>
+          <input type="checkbox" checked={includeCommonIngredients} onChange={() => setIncludeCommonIngredients(!includeCommonIngredients)} id="select-essential"></input>
+          
+          <button onClick={performIngredientSearch} className="search-recipe-button">search</button>
 
           <div className="search-instructions">
             <ol>
@@ -1319,17 +1382,18 @@ export default function Ingredients() {
             ) : (
               recipes.map((recipe, index) => {
                 const isMatching = isRecipeMatching(recipe.recipe.ingredients);
+                console.log(`Recipe ${recipe.recipe.label} is matching:`, isMatching);
                 if (isMatching) {
                   return (
-                      <Recipes
-                        id={recipe.recipe.label}
-                        image={recipe.recipe.image}
-                        title={recipe.recipe.label}
-                        calories={Math.floor(recipe.recipe.calories)}
-                        ingredients={recipe.recipe.ingredients}
-                        type={recipe.recipe.mealType}
-                        time={recipe.recipe.totalTime}
-                      />
+                    <Recipes
+                      id={recipe.recipe.label}
+                      image={recipe.recipe.image}
+                      title={recipe.recipe.label}
+                      calories={Math.floor(recipe.recipe.calories)}
+                      ingredients={recipe.recipe.ingredients}
+                      type={recipe.recipe.mealType}
+                      time={recipe.recipe.totalTime}
+                    />
                   );
                 }
                 return null;
