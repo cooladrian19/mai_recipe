@@ -151,6 +151,7 @@ export default function Ingredients() {
       <div className="ingredient-body">
         <form className="tab-container">
           <span>select your ingredients</span>
+          
           <div class="tabs">
             <input type="radio" name="tabs" id="tabone" />
             <label htmlFor="tabone">Protien</label>
@@ -1345,12 +1346,15 @@ export default function Ingredients() {
             </div>
           </div>
 
+          <button onClick={performIngredientSearch} className="search-recipe-button-ingredients">search</button>
+            
+          <div className="checkbox-wrapper-47">
+              <input type="checkbox"  checked={includeCommonIngredients} onChange={() => setIncludeCommonIngredients(!includeCommonIngredients)} id="select-essential"/>
+              <label for="select-essential">select essentials <p>selects all essential ingredients: salt, pepper, oil, etc. </p> </label>
+            </div>
+       
           
-          <label for="select-essential">select all essentials</label>
-          <input type="checkbox" checked={includeCommonIngredients} onChange={() => setIncludeCommonIngredients(!includeCommonIngredients)} id="select-essential"></input>
           
-          <button onClick={performIngredientSearch} className="search-recipe-button">search</button>
-
           <div className="search-instructions">
             <ol>
               <li>

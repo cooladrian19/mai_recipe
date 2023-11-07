@@ -26,7 +26,7 @@ export default function Search() {
   const fetchEdamamRecipes = async () => {
     try {
       const response = await fetch(
-        `https://api.edamam.com/search?q=${query}&app_id=${APP_ID}&app_key=${APP_KEY}&time=1%2B`
+        `https://api.edamam.com/search?q=${query}&app_id=${APP_ID}&app_key=${APP_KEY}&time=1%2B&to=20`
       );
       const data = await response.json();
       setRecipes(data.hits);
@@ -81,11 +81,10 @@ export default function Search() {
           ) : (
             recipes.map((recipe) => (
               <Recipes
-                id={recipe.recipe.label}
+                id={recipe.recipe.uri}
                 image={recipe.recipe.image}
                 title={recipe.recipe.label}
                 calories={Math.floor(recipe.recipe.calories)}
-                
                 ingredients={recipe.recipe.ingredients}
                 type={recipe.recipe.mealType}
                 time={recipe.recipe.totalTime}

@@ -33,9 +33,6 @@
 }
 
 
-
-
-
 /** LEFT TABS **/
 
 .tab-container {
@@ -65,7 +62,7 @@
 
 }
  .tabs {
-    width: 50%;
+    width: 1050px;
 	display: flex;
 	flex-wrap: wrap;
     justify-content: center;
@@ -118,12 +115,132 @@
   }
 }
 
+.checkbox-wrapper-47 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 325x;
+    background-color: #c5b6a763;
+    border-radius: 5px;
+}
+.checkbox-wrapper-47 p {
+    font-size: small;
+    color: #575054;
+  }
+.checkbox-wrapper-47 input[type="checkbox"] {
+    display: none;
+    visibility: hidden; 
+  }
+  .checkbox-wrapper-47 label {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    justify-items: center;
+    position: relative;
+    padding-left: 2em;
+    padding-right: 1em;
+    line-height: 2;
+    cursor: pointer;
+    display: inline-flex;
+    user-select: none;
+  }
+
+  .checkbox-wrapper-47 label:before {
+    box-sizing: border-box;
+    content: " ";
+    position: absolute;
+    top: 0.3em;
+    left: 0;
+    display: block;
+    width: 1.4em;
+    height: 1.4em;
+    border: 2px solid #9e8a98;
+    border-radius: 6px;
+  }
+
+  .checkbox-wrapper-47 input[type=checkbox]:checked + label {
+    padding-left: 1em;
+    color: rgb(26, 22, 22);
+    
+  }
+  .checkbox-wrapper-47 input[type=checkbox]:checked + label:before {
+    top: 0;
+    width: 100%;
+    height: 2em;
+    background: rgba(255, 233, 244, 0.267);
+    border-color: rgb(201, 165, 183);
+  }
+
+  .checkbox-wrapper-47 label,
+  .checkbox-wrapper-47 label::before {
+    transition: 0.25s all ease;
+  }
 
 
 
 
 
 
+.search-recipe-button-ingredients {
+    margin-bottom: 10px;
+    width: 425px;
+    font-weight: 600;
+    color: #412c26;
+    text-transform: uppercase;
+    background-color: #b18597;
+    padding: 0.8em 2.5em;
+    background: #fff0f0;
+    border: 2px solid #b18597;    
+    border-radius: 0.75em;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    -webkit-transition: background 150ms cubic-bezier(0, 0, 0.58, 1), -webkit-transform 150ms cubic-bezier(0, 0, 0.58, 1);
+    transition: transform 150ms cubic-bezier(0, 0, 0.58, 1), background 150ms cubic-bezier(0, 0, 0.58, 1), -webkit-transform 150ms cubic-bezier(0, 0, 0.58, 1);
+}
+
+.search-recipe-button-ingredients::before {
+    position: absolute;
+    content: '';
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #f9c4d2;
+    border-radius: inherit;
+    -webkit-box-shadow: 0 0 0 2px #b18597, 0 0.625em 0 0 #ffe3e2;
+    box-shadow: 0 0 0 2px #b18597, 0 0.625em 0 0 #ffe3e2;
+    -webkit-transform: translate3d(0, 0.75em, -1em);
+    transform: translate3d(0, 0.75em, -1em);
+    transition: transform 150ms cubic-bezier(0, 0, 0.58, 1), box-shadow 150ms cubic-bezier(0, 0, 0.58, 1), -webkit-transform 150ms cubic-bezier(0, 0, 0.58, 1), -webkit-box-shadow 150ms cubic-bezier(0, 0, 0.58, 1);
+}
+
+.search-recipe-button-ingredients:hover {
+    background: #ffe9e9;
+    -webkit-transform: translate(0, 0.25em);
+    transform: translate(0, 0.25em);
+}
+
+.search-recipe-button-ingredients:hover::before {
+    -webkit-box-shadow: 0 0 0 2px #b18597, 0 0.5em 0 0 #ffe3e2;
+    box-shadow: 0 0 0 2px #b18597, 0 0.5em 0 0 #ffe3e2;
+    -webkit-transform: translate3d(0, 0.5em, -1em);
+    transform: translate3d(0, 0.5em, -1em);
+}
+
+.search-recipe-button-ingredients:active {
+    background: #ffe9e9;
+    -webkit-transform: translate(0em, 0.75em);
+    transform: translate(0em, 0.75em);
+}
+
+.search-recipe-button-ingredients:active::before {
+    -webkit-box-shadow: 0 0 0 2px #b18597, 0 0 #ffe3e2;
+    box-shadow: 0 0 0 2px #b18597, 0 0 #ffe3e2;
+    -webkit-transform: translate3d(0, 0, -1em);
+    transform: translate3d(0, 0, -1em);
+}
 
 
 /** LEFT INSTRUCTIONS **/
@@ -260,39 +377,37 @@ ul.ks-cboxtags li input[type="checkbox"] {
 }
 
 @media (max-width: 1523px) {
-    .tab-container {
-        padding: 2rem;
-    }
+
     .tabs {
-        width: 65%;
+        width: 950px;
     }
     .ingredient-recipes-wrap {
         width: 80%;
     }
 }
 
-@media (max-width: 820px) {
+@media (max-width: 1200px) {
     .tab-container {
         padding: 1rem;
-        
     }
     .tabs {
-        width: 90%;
+        width: 80%;
     }
+  
+}
+
+@media (max-width: 860px) {
+
     .side-img-container {
         width:400px;
     height: 400px;
     }
-    .tab-container span {
-        width: 75%;   
-        font-size: 1rem;
-        padding: 0.75rem;
-    }
+    
 
 }
 
 
-@media (max-width: 540px) {
+@media (max-width: 768px) {
     
     .tab-container {
         width: 100%;
@@ -306,14 +421,17 @@ ul.ks-cboxtags li input[type="checkbox"] {
         height: 400px;
     }
     .tab-container span {
-        width: 75%;   
-        font-size: 1rem;
+        width: 100%;   
+        font-size: 1.1rem;
         padding: 0.75rem;
     }
     .side-img-container {
         width: 80%;
         height: 80%;
      
+    }
+    .search-recipe-button-ingredients {
+        width: 100%;
     }
 
 }

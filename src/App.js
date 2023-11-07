@@ -23,7 +23,7 @@ function App() {
         <Route path="/about" element = {<About />} />
         <Route path="/auth" element = {<Auth />} />
         <Route path="/profile" element = {<Profile />} />
-        <Route path="/details" element = {<Details />} />
+        <Route path="/details/:id" element = {<Details />} />
         <Route path="/searchIngredients" element = {<Ingredients />} />
         <Route path="*" element = {<NoPage />} />
       </Routes>
