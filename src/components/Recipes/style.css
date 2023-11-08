@@ -12,7 +12,6 @@
     justify-content: center;
 }
 
-
 .recipes-card {
     background-color: #ffffff;
     display: flex;
@@ -26,7 +25,11 @@
     border-radius: 1.5em;
     gap: 0.5rem;
     overflow: hidden;
-    cursor: pointer;
+    text-decoration: none;
+}
+.recipes-card:hover {
+    border-color: #a16376;
+    border-width: 3px;
 }
 
 .recipes-img-contain {
@@ -62,11 +65,15 @@
     font-size: 1rem;
     color:rgb(83, 79, 82);
 }
-.recipes-details-contain li {
+
+.recipes-details-contain ul {
     display: flex;
-    flex-wrap: wrap;
     gap: 5px;
-    padding-top: 5px;
+    max-height: 100px;
+    max-width: 95%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 .recipes-details-contain span {
     font-weight: 800;

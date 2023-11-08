@@ -1,168 +1,103 @@
-import { useEffect, useState } from "react";
-import styled from "styled-components";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/react-splide/css";
 import "./style.css";
 
 // mock images
-import mockImage1 from "../../assets/mock/mock-image-1.jpg";
-import mockImage2 from "../../assets/mock/mock-image-2.jpg";
-import mockImage3 from "../../assets/mock/mock-image-3.jpg";
-import mockImage4 from "../../assets/mock/mock-image-4.jpg";
-import mockImage5 from "../../assets/mock/mock-image-5.jpg";
-import mockImage6 from "../../assets/mock/mock-image-6.jpg";
+import breakfast from "../../assets/mock/breakfast.jpg";
+import lunch from "../../assets/mock/lunch.jpg";
+import dinner from "../../assets/mock/dinner.jpg";
+import dessert from "../../assets/mock/dessert.jpg";
+import healthy from "../../assets/mock/healthy.jpg";
+import beverages from "../../assets/mock/beverages.jpg";
+import { Link } from "react-router-dom";
 
 export default function Trending() {
   {
-    /* 
-
-  const [trending, setTrending] = useState([]);
-
-  useEffect(() => {
-    getTrending();
-  }, []);
-
- 
-  const getTrending = async () => {
-    const api = await fetch(
-      `https://api.spoonacular.com/recipes/random?apiKey=${process.env.REACT_APP_API_KEY}&number=4`
-    );
-    const data = await api.json();
-    setTrending(data.recipes);
-    console.log(data.recipes);
-  };
-
-*/
   }
 
   const mockTrending = [
     {
-      title: "Mock Recipe 1",
-      image: mockImage1,
+      title: "breakfast",
+      image: breakfast,
     },
     {
-      title: "Mock Recipe 2",
-      image: mockImage2,
+      title: "lunch",
+      image: lunch,
     },
     {
-      title: "Mock Recipe 3",
-      image: mockImage3,
+      title: "dinner",
+      image: dinner,
     },
     {
-      title: "Mock Recipe 4",
-      image: mockImage4,
+      title: "dessert",
+      image: dessert,
     },
     {
-      title: "Mock Recipe 5",
-      image: mockImage5,
+      title: "healthy",
+      image: healthy,
     },
     {
-      title: "Mock Recipe 6",
-      image: mockImage6,
+      title: "beverages",
+      image: beverages,
     },
   ];
 
   return (
-
-      <div className="trending-container">
-        <h1 className="trend-title  ">Trending</h1>
-
-        {/*
+    <div className="trending-container">
+      <div className="splide-container">
+        <span className="trend-title  ">quick recipes</span>
+        {/* mockkkkkkkkkk */}
         <Splide
           options={{
             perPage: 4,
-            arrows: false,
-            gap: "5rem",
+            arrows: true,
+            height: 350,
+            width: 1250,
+            type: "loop",
+            autoplay: true,
+            gap: "1rem",
+            wheel: true,
+
+            breakpoints: {
+              1343: {
+                width: 900,
+                perPage: 3,
+              },
+              940: {
+                direction: "ttb",
+                width: "100%",
+                perPage: 2,
+                perMove: 1,
+                gap: "0rem",
+                height: "700px",
+              },
+              768: {
+                direction: "ttb",
+              },
+            },
           }}
         >
-          {trending.map((recipe) => {
-            return (
-              <SplideSlide>
-                <Card>
-                  <p>{recipe.title}</p>
+          {mockTrending.map((recipe, index) => (
+            <SplideSlide key={index}>
+              <Link
+                to={`/quickRecipe/${recipe.title}?image=${encodeURIComponent(
+                  recipe.image
+                )}`}
+                className="trend-card"
+              >
+                <div className="trend-card-img">
                   <img src={recipe.image} alt={recipe.title} />
-                </Card>
-              </SplideSlide>
-            );
-          })}
+                </div>
+                <div className="trend-card-details">
+                  <p>{recipe.title}</p>
+                </div>
+              </Link>
+            </SplideSlide>
+          ))}
         </Splide>
-        */}
 
-        <div className="splide-container">
-          {/* mockkkkkkkkkk */}
-          <Splide
-            options={{
-              perPage: 5,
-              arrows: false,
-              gap: "1rem",
-              height: 350,
-              width: "100%",
-              
-
-              breakpoints: {
-                2950: {
-                  perPage: 4,
-                  
-                },
-                1777: {
-                  perPage: 3,
-
-                },
-                1343: {
-                  perPage: 2,
-                },
-                900: {
-                  destroy: true,
-
-                },
-
-
-              },
-            }}
-          >
-            {mockTrending.map((recipe, index) => (
-              <SplideSlide key={index} >
-                <a className="trend-card" href="/">
-                  <div className="trend-card-img">
-                    <img src={recipe.image} alt={recipe.title} />
-                  </div>
-                  <div className="trend-card-details">
-                    <p>{recipe.title}</p>
-                    <p>calories</p>
-                  </div>
-                  
-                </a>
-              </SplideSlide>
-            ))}
-          </Splide>
-
-          {/* mockkkkkkkkkk */}
-        </div>
+        {/* mockkkkkkkkkk */}
       </div>
+    </div>
   );
 }
-
-const Wrapper = styled.div`
-  margin: 12rem 0rem;
-`;
-const Card = styled.div`
-  margin: 4rem 0rem;
-  min-height: 25rem;
-  border-radius: 2rem;
-  overflow: hidden;
-  position: relative;
-
-  img {
-    border-radius: 2rem;
-    position: absolute;
-    object-fit: cover;
-    left: 0;
-    width: 100%;
-    height: 100%;
-  }
-
-  p {
-    display: flex;
-    justify-content: center;
-  }
-`;

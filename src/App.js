@@ -8,6 +8,7 @@ import Profile from "./pages/Profile";
 import Details from "./pages/Details";
 import Ingredients from "./pages/Ingredients";
 import NoPage from "./pages/NoPage";
+import QuickRecipe from "./pages/QuickRecipe";
 import { AuthProvider } from "./contexts/AuthContext";
 
 
@@ -24,6 +25,7 @@ function App() {
         <Route path="/auth" element = {<Auth />} />
         <Route path="/profile" element = {<Profile />} />
         <Route path="/details/:id" element = {<Details />} />
+        <Route path="/quickRecipe/:category" element = {<QuickRecipe />} />
         <Route path="/searchIngredients" element = {<Ingredients />} />
         <Route path="*" element = {<NoPage />} />
       </Routes>

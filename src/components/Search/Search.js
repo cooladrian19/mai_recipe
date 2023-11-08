@@ -11,7 +11,6 @@ export default function Search() {
   const [fetchRecipes, setFetchRecipes] = useState(false); // New state to control when to fetch recipes
   const [recipesFetched, setRecipesFetched] = useState(false); // New state to track if recipes have been fetched
 
-
   // Run API function only when fetchRecipes is true
   useEffect(() => {
     if (fetchRecipes && query) {
@@ -45,9 +44,7 @@ export default function Search() {
     setQuery(search);
     setSearch("");
     setFetchRecipes(true); // Set fetchRecipes to true when searching
-   
   };
-
 
   return (
     <div className="container">
@@ -63,13 +60,13 @@ export default function Search() {
           value={search}
           onChange={updateSearch}
         ></input>
-        <button type="submit" className="search-recipe-button">
+        <button type="submit" className="search-recipe-button-home">
           search
         </button>
       </form>
 
       {/* DISPLAY RESULTS */}
-      <div className="results-count">
+      <div className={`results-count ${recipesFetched ? "" : "hidden"}`}>
         {recipesFetched && <p>{recipes.length} results found</p>}
       </div>
 
@@ -77,7 +74,7 @@ export default function Search() {
       <div className="recipes-wrapper">
         <div className="recipes-container">
           {recipesFetched && recipes.length === 0 ? (
-            <p>No recipes found. Try a different search.</p>
+            <p>No recipes found, try a different search.</p>
           ) : (
             recipes.map((recipe) => (
               <Recipes

@@ -79,7 +79,6 @@ export default function Details() {
               {recipeDetails.ingredientLines.map((ingredient, index) => (
                 <li key={index}>{ingredient}</li>
               ))}
-              <li>meat</li>
             </ul>
           </div>
 
