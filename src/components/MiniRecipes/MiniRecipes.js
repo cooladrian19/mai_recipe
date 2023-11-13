@@ -11,7 +11,8 @@ export default function MiniRecipes({ recipe }) {
       <img src={recipe.recipe.image} alt={recipe.recipe.label} className="mini-image" />
       <div className="mini-info">
         <h3>{recipe.recipe.label}</h3>
-        <p>Calories: {Math.round(recipe.recipe.calories)}</p>
+        <p>cuisine type: {recipe.recipe.cuisineType}</p>
+        <p>calories: {Math.round(recipe.recipe.calories)}</p>
       </div>
     </Link>
   )

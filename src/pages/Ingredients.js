@@ -5,6 +5,7 @@ import "./Ingredients.css";
 import SideImg from "../assets/cooking.png";
 import Recipes from "../components/Recipes/Recipes";
 
+
 export default function Ingredients() {
   const [recipes, setRecipes] = useState([]);
   const [selectedIngredients, setSelectedIngredients] = useState([]);
@@ -12,9 +13,10 @@ export default function Ingredients() {
   const [recipesFetched, setRecipesFetched] = useState(false);
   const [ingredientHash, setIngredientHash] = useState({});
   const [includeCommonIngredients, setIncludeCommonIngredients] = useState(false);
+  const [hasMatches, setHasMatches] = useState(true); 
+  const [loading, setLoading] = useState(false);
 
 
-  // Initialize ingredient hash when selectedIngredients change
   useEffect(() => {
     const hash = {};
     selectedIngredients.forEach((ingredient) => {
@@ -25,7 +27,6 @@ export default function Ingredients() {
   }, [selectedIngredients]);
 
 
-  // Run API function only when fetchRecipes is true
   useEffect(() => {
     if (fetchRecipes && selectedIngredients.length > 0) {
       fetchEdamamRecipesByIngredient(selectedIngredients);
@@ -46,7 +47,7 @@ export default function Ingredients() {
     }
   }, [includeCommonIngredients]);
   
-  // Make sure to reset the common ingredients when the selectedIngredients change manually
+
   useEffect(() => {
     if (!selectedIngredients.some(ingredient => commonIngredients.includes(ingredient))) {
       setIncludeCommonIngredients(false);
@@ -54,21 +55,32 @@ export default function Ingredients() {
   }, [selectedIngredients]);
 
 
-  const APP_ID = "3b7d48b2";
-  const APP_KEY = "62689d9882d65ab7e7833e831da0f798";
+  
   const fetchEdamamRecipesByIngredient = async (ingredients) => {
 
     const firstIngredient = ingredients[0];
-    const apiUrl = `https://api.edamam.com/search?q=${firstIngredient}&app_id=${APP_ID}&app_key=${APP_KEY}&to=25`;
+    const apiUrl = `https://api.edamam.com/search?q=${firstIngredient}&app_id=${process.env.REACT_APP_APP_ID}&app_key=${process.env.REACT_APP_APP_KEY}&to=100`;
 
     try {
       const response = await fetch(apiUrl);
       const data = await response.json();
-      console.log(data);
-      setRecipes(data.hits);
+      const matchedRecipes = data.hits.filter((recipe) =>
+        isRecipeMatching(recipe.recipe.ingredients)
+      );
+  
+      setRecipes(matchedRecipes);
       setRecipesFetched(true);
+  
+      if (matchedRecipes.length === 0) {
+        setHasMatches(false);
+      }
     } catch (error) {
       console.error("Error fetching recipes from Edamam: ", error);
+      setRecipesFetched(true);
+      setHasMatches(false);
+    } finally {
+      setLoading(false); 
+      setRecipesFetched(true); 
     }
   };
 
@@ -78,7 +90,6 @@ export default function Ingredients() {
       return false;
     }
 
-    // Log the recipe ingredients to see if they are in the expected format
     console.log("Checking recipe with ingredients:", recipeIngredients);
 
     return recipeIngredients.every((ingredientObj) => {
@@ -108,7 +119,7 @@ export default function Ingredients() {
         // Add just this specific ingredient
         newIngredients = [...selectedIngredients, ingredient];
       }
-      setSelectedIngredients(Array.from(new Set(newIngredients))); // Use Set to remove duplicates
+      setSelectedIngredients(Array.from(new Set(newIngredients))); 
     } else {
       if (isCategory) {
         // Remove all specific ingredients for the category
@@ -120,18 +131,163 @@ export default function Ingredients() {
     }
   };
 
-  // Function to trigger the search
   const performIngredientSearch = (e) => {
-    setFetchRecipes(true);
-    console.log("Selected Ingredients:", selectedIngredients);
     e.preventDefault();
+    setRecipes([]);
+    setRecipesFetched(false); 
+    setHasMatches(true); 
+    setLoading(true);
+    fetchEdamamRecipesByIngredient(selectedIngredients);
   };
 
-  const commonIngredients = ['black pepper', 'white pepper', 'water', 'butter', 'chicken seasoning', 'beef seasoning', 'salt', 'sugar'];
+  const commonIngredients = [
+    'black pepper', 
+    'white pepper', 
+    'water', 
+    'butter', 
+    'chicken seasoning', 
+    'beef seasoning', 
+    'salt', 
+    'sugar', 
+    'oil',
+    'flour',
+    'eggs',
+    'milk',
+    'rice',
+    'pasta',
+    'garlic',
+    'onion',
+    'baking powder',
+    'baking soda',
+    'vinegar',
+    'soy sauce',
+    'honey',
+    'tomato sauce',
+    'lemon juice',
+    'mustard',
+    'dried herbs',
+    'paprika',
+    'cinnamon',
+    'vanilla extract',
+    'yeast',
+    'cocoa powder',
+    'maple syrup',
+    'chili powder',
+    'oregano',
+    'thyme',
+    'cumin',
+    'coriander',
+    'turmeric',
+    'bay leaves',
+    'curry powder',
+    'nutmeg',
+    'red pepper flakes',
+    'canned beans',
+    'canned tomatoes',
+    'chicken broth',
+    'beef broth',
+    'vegetable broth',
+    'coconut milk',
+    'cornstarch',
+    'peanut butter',
+    'almonds',
+    'walnuts',
+    'olive oil',
+    'sesame oil',
+    'canola oil',
+    'sunflower oil',
+    'coffee',
+    'tea'
+  ];
+  
 
   const ingredientCategoryMap = {
-    oil: ['olive oil', 'extra virgin olive oil', 'vegetable oil'],
-    chicken: ['chicken wings', 'chicken breasts', 'chicken legs'],
+    oil: [
+      'olive oil', 
+      'extra virgin olive oil', 
+      'vegetable oil', 
+      'canola oil', 
+      'sunflower oil', 
+      'coconut oil', 
+      'peanut oil', 
+      'grapeseed oil', 
+      'sesame oil', 
+      'avocado oil'
+    ],
+    chicken: [
+      'chicken wings', 
+      'chicken breasts', 
+      'chicken legs', 
+      'chicken thighs', 
+      'ground chicken', 
+      'chicken drumsticks', 
+      'whole chicken', 
+      'boneless chicken', 
+      'chicken tenders', 
+      'chicken cutlets'
+    ],
+    beef: [
+      'ground beef', 
+      'steak', 
+      'beef ribs', 
+      'beef brisket', 
+      'beef loin', 
+      'beef chuck', 
+      'beef shank', 
+      'filet mignon', 
+      'sirloin', 
+      'ribeye'
+    ],
+    fish: [
+      'salmon', 
+      'tuna', 
+      'cod', 
+      'tilapia', 
+      'halibut', 
+      'trout', 
+      'haddock', 
+      'mackerel', 
+      'sardines', 
+      'anchovies'
+    ],
+    rice: [
+      'white rice', 
+      'brown rice', 
+      'jasmine rice', 
+      'basmati rice', 
+      'short-grain rice', 
+      'sushi rice', 
+      'arborio rice', 
+      'black rice', 
+      'wild rice', 
+      'red rice',
+      'sticky rice', 
+      'parboiled rice', 
+      'converted rice', 
+      'long-grain rice', 
+      'calrose rice', 
+      'wehani rice', 
+      'bamboo rice', 
+      'valencia rice', 
+      'carnaroli rice',
+      'bhutanese red rice', 
+      'forbidden rice', 
+      'paella rice', 
+      'glutinous rice', 
+      'instant rice', 
+      'sprouted rice', 
+      'risotto rice'
+    ],
+    apple: [
+      'green apples',
+      'red apples',
+
+    ],
+    onion: [
+      'white onions',
+      'yellow onions',
+
+    ],
 
   };
   
@@ -151,13 +307,13 @@ export default function Ingredients() {
       <div className="ingredient-body">
         <form className="tab-container">
           <span>select your ingredients</span>
-          
+
           <div class="tabs">
             <input type="radio" name="tabs" id="tabone" />
             <label htmlFor="tabone">Protien</label>
             <div class="tab">
               <ul class="ks-cboxtags">
-              <li>
+                <li>
                   <input
                     id="beef"
                     type="checkbox"
@@ -173,7 +329,7 @@ export default function Ingredients() {
                     value="chicken"
                     onChange={handleIngredientSelection}
                   />
-                  <label for="chickem">chicken</label>
+                  <label for="chicken">chicken</label>
                 </li>
                 <li>
                   <input
@@ -210,7 +366,7 @@ export default function Ingredients() {
                     onChange={handleIngredientSelection}
                   />
                   <label for="duck">Duck</label>
-                </li>    
+                </li>
                 <li>
                   <input
                     id="lamb"
@@ -560,7 +716,7 @@ export default function Ingredients() {
               <ul class="ks-cboxtags">
                 <li>
                   <input
-                    id="Banana"
+                    id="banana"
                     type="checkbox"
                     value="banana"
                     onChange={handleIngredientSelection}
@@ -774,7 +930,7 @@ export default function Ingredients() {
               <ul class="ks-cboxtags">
                 <li>
                   <input
-                    id="Egg"
+                    id="egg"
                     type="checkbox"
                     value="egg"
                     onChange={handleIngredientSelection}
@@ -1038,6 +1194,15 @@ export default function Ingredients() {
             <label htmlFor="tabsix">Baking Supplies</label>
             <div class="tab">
               <ul class="ks-cboxtags">
+              <li>
+                  <input
+                    id="oil"
+                    type="checkbox"
+                    value="oil"
+                    onChange={handleIngredientSelection}
+                  />
+                  <label for="oil">Oil</label>
+                </li>
                 <li>
                   <input
                     id="flour"
@@ -1166,7 +1331,7 @@ export default function Ingredients() {
                 </li>
                 <li>
                   <input
-                    id="Walnuts"
+                    id="walnuts"
                     type="checkbox"
                     value="walnuts"
                     onChange={handleIngredientSelection}
@@ -1346,15 +1511,60 @@ export default function Ingredients() {
             </div>
           </div>
 
-          <button onClick={performIngredientSearch} className="search-recipe-button-ingredients">search</button>
-            
+          <button
+            onClick={performIngredientSearch}
+            className="search-recipe-button-ingredients"
+          >
+            search
+          </button>
+
           <div className="checkbox-wrapper-47">
-              <input type="checkbox"  checked={includeCommonIngredients} onChange={() => setIncludeCommonIngredients(!includeCommonIngredients)} id="select-essential"/>
-              <label for="select-essential">select essentials <p>selects all essential ingredients: salt, pepper, oil, etc. </p> </label>
-            </div>
-       
-          
-          
+            <input
+              type="checkbox"
+              checked={includeCommonIngredients}
+              onChange={() =>
+                setIncludeCommonIngredients(!includeCommonIngredients)
+              }
+              id="select-essential"
+            />
+            <label for="select-essential">
+              select essentials{" "}
+              <p>selects all essential ingredients: salt, pepper, oil, etc. </p>{" "}
+            </label>
+          </div>
+        </form>
+
+        {/* Display recipes here */}
+        <div className="recipes-wrapper">
+          {loading ? (
+            <span class="loader"></span>
+          ) : recipesFetched ? (
+            hasMatches ? (
+              <ul className="recipes-container">
+                {recipes.map((recipe, index) => (
+                  <Recipes
+                    key={recipe.recipe.uri}
+                    id={recipe.recipe.label}
+                    image={recipe.recipe.image}
+                    title={recipe.recipe.label}
+                    calories={Math.floor(recipe.recipe.calories)}
+                    ingredients={recipe.recipe.ingredients}
+                    type={recipe.recipe.mealType}
+                    time={recipe.recipe.totalTime}
+                  />
+                ))}
+              </ul>
+            ) : (
+              <p className="no-recipes-found">
+                <i class="fa-solid fa-circle-exclamation" style={{color: "#" + "a16376"}}></i>
+                No recipes found. Try a different search.
+              </p>
+            )
+          ) : null 
+          }
+        </div>
+
+        {!recipesFetched && (
           <div className="search-instructions">
             <ol>
               <li>
@@ -1376,42 +1586,16 @@ export default function Ingredients() {
               </li>
             </ol>
           </div>
-        </form>
+        )}
 
-        {/* Display recipes here */}
-        <div className="recipes-wrapper">
-          <ul className="recipes-container">
-            {recipesFetched && recipes.length === 0 ? (
-              <p>No recipes found. Try a different search.</p>
-            ) : (
-              recipes.map((recipe, index) => {
-                const isMatching = isRecipeMatching(recipe.recipe.ingredients);
-                console.log(`Recipe ${recipe.recipe.label} is matching:`, isMatching);
-                if (isMatching) {
-                  return (
-                    <Recipes
-                      id={recipe.recipe.label}
-                      image={recipe.recipe.image}
-                      title={recipe.recipe.label}
-                      calories={Math.floor(recipe.recipe.calories)}
-                      ingredients={recipe.recipe.ingredients}
-                      type={recipe.recipe.mealType}
-                      time={recipe.recipe.totalTime}
-                    />
-                  );
-                }
-                return null;
-              })
-            )}
-          </ul>
-        </div>
-
-        {/* image side*/}
-        <div className="side-container">
-          <div className="side-img-container">
-            <img src={SideImg}></img>
+        {!recipesFetched && (
+          <div className="side-container">
+            <div className="side-img-container">
+              <img src={SideImg}></img>
+            </div>
           </div>
-        </div>
+        )}
+        {/* image side*/}
       </div>
 
       <Footer />

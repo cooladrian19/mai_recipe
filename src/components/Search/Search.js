@@ -2,55 +2,63 @@ import React from "react";
 import { useState, useEffect } from "react";
 import "./style.css";
 import Recipes from "../Recipes/Recipes";
-import Ingredients from "../../pages/Ingredients";
 
 export default function Search() {
   const [recipes, setRecipes] = useState([]);
   const [search, setSearch] = useState("");
   const [query, setQuery] = useState("");
-  const [fetchRecipes, setFetchRecipes] = useState(false); // New state to control when to fetch recipes
-  const [recipesFetched, setRecipesFetched] = useState(false); // New state to track if recipes have been fetched
+  const [fetchRecipes, setFetchRecipes] = useState(false);
+  const [recipesFetched, setRecipesFetched] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [displayedRecipes, setDisplayedRecipes] = useState(15);
+  
 
-  // Run API function only when fetchRecipes is true
   useEffect(() => {
     if (fetchRecipes && query) {
       fetchEdamamRecipes();
-      setFetchRecipes(false); // Reset fetchRecipes after fetching
+      setFetchRecipes(false);
     }
   }, [fetchRecipes, query]);
 
-  // Call the Edamam API
-  const APP_ID = "3b7d48b2";
-  const APP_KEY = "62689d9882d65ab7e7833e831da0f798";
+  
   const fetchEdamamRecipes = async () => {
+    setLoading(true); 
+    setRecipesFetched(false);
     try {
       const response = await fetch(
-        `https://api.edamam.com/search?q=${query}&app_id=${APP_ID}&app_key=${APP_KEY}&time=1%2B&to=20`
+        `https://api.edamam.com/search?q=${query}&app_id=${process.env.REACT_APP_APP_ID}&app_key=${process.env.REACT_APP_APP_KEY}&time=1%2B&to=100`
       );
       const data = await response.json();
       setRecipes(data.hits);
-      setRecipesFetched(true); // Recipes have been fetched
       console.log(data);
     } catch (error) {
       console.error("Error fetching recipes from Edamam: ", error);
+    } finally {
+      setLoading(false); 
+      setRecipesFetched(true); 
     }
+  };
+
+  const handleShowMore = () => {
+    setDisplayedRecipes((prevDisplayedRecipes) => prevDisplayedRecipes + 15);
   };
 
   const updateSearch = (e) => {
     setSearch(e.target.value);
   };
+
   const getSearch = (e) => {
     e.preventDefault();
     setQuery(search);
     setSearch("");
-    setFetchRecipes(true); // Set fetchRecipes to true when searching
+    setFetchRecipes(true);
   };
 
   return (
     <div className="container">
       {/* SEARCH BY NAME */}
       <label htmlFor="searchRecipe" className="search-label">
-        search by name
+        Search by Name
       </label>
       <form onSubmit={getSearch} className="search-container">
         <input
@@ -59,37 +67,54 @@ export default function Search() {
           placeholder="enter any type of food..."
           value={search}
           onChange={updateSearch}
-        ></input>
+        />
         <button type="submit" className="search-recipe-button-home">
           search
         </button>
       </form>
 
+      {/* LOADING INDICATOR */}
+      {loading && <div className="loader"></div>}
+
       {/* DISPLAY RESULTS */}
-      <div className={`results-count ${recipesFetched ? "" : "hidden"}`}>
-        {recipesFetched && <p>{recipes.length} results found</p>}
-      </div>
+      {!loading && recipesFetched && (
+        <div className="results-count">
+          <p>{recipes.length} results found</p>
+        </div>
+      )}
 
       {/* DISPLAY RECIPES */}
-      <div className="recipes-wrapper">
-        <div className="recipes-container">
+      {!loading && (
+        <div className="recipes-wrapper">
+          <div className="recipes-container">
           {recipesFetched && recipes.length === 0 ? (
-            <p>No recipes found, try a different search.</p>
-          ) : (
-            recipes.map((recipe) => (
-              <Recipes
-                id={recipe.recipe.uri}
-                image={recipe.recipe.image}
-                title={recipe.recipe.label}
-                calories={Math.floor(recipe.recipe.calories)}
-                ingredients={recipe.recipe.ingredients}
-                type={recipe.recipe.mealType}
-                time={recipe.recipe.totalTime}
-              />
-            ))
-          )}
+              <p>No recipes found, try a different search.</p>
+            ) : (
+              recipes.slice(0, displayedRecipes).map((recipe) => ( 
+                <Recipes
+                  id={recipe.recipe.uri} 
+                  image={recipe.recipe.image}
+                  title={recipe.recipe.label}
+                  calories={Math.floor(recipe.recipe.calories)}
+                  ingredients={recipe.recipe.ingredients}
+                  type={recipe.recipe.mealType}
+                  time={recipe.recipe.totalTime}
+                />
+              ))
+            )}
+
+        
+
+          </div>
+          {displayedRecipes < recipes.length && (
+              <button onClick={handleShowMore} className="show-more-button">
+                Show me More
+              </button>
+            )}
         </div>
-      </div>
+
+
+      )}
     </div>
   );
 }

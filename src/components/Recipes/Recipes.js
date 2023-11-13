@@ -15,37 +15,36 @@ export default function Recipes({
 
   return (
     <Link className="recipes-card" to={`/details/${recipeId}`}>
-      <div className="recipes-img-contain">
-        <img src={image} alt={title}></img>
-      </div>
+      <img src={image} alt={title} className="recipes-img-contain"></img>
 
-      <div className="recipes-details-contain">
-        <h4>{title}</h4>
-        <p>
-          {" "}
-          <span>meal type:</span> {type}
-        </p>
-        <p>
-          {" "}
-          <span>calories:</span> {calories}
-        </p>
-        <p>
-          {" "}
-          <span>ingredients:</span>
-          <ul>
-            {ingredients.map((ingredient, index) => (
-              <li key={index}>
-                {ingredient.food}{index < ingredients.length - 1 ? ", " : ""}
-              </li>
-            ))}
-          </ul>
-        </p>
-      </div>
+      <div className="recipes-card-body">
+        <div className="recipes-details-contain">
+          <h4>{title}</h4>
+          <p>
+            {" "}
+            <span>meal type:</span> {type}
+          </p>
+          <p>
+            {" "}
+            <span>calories:</span> {calories}
+          </p>
+          <p>
+            {" "}
+            <span>ingredients:</span>
+            <ul>
+              {ingredients.map((ingredient, index) => (
+                <li key={index}>
+                  {ingredient.food}
+                  {index < ingredients.length - 1 ? ", " : ""}
+                </li>
+              ))}
+            </ul>
+          </p>
+        </div>
 
-      <div className="recipes-card-bottom">
-        <p>{time} mins</p>
-        <div className="time-container">
-          <i className="gg-time"></i>
+        <div className="recipes-card-bottom">
+          <p>{time} mins</p>
+          <i class="fa-regular fa-clock"></i>
         </div>
       </div>
     </Link>

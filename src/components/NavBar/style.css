@@ -3,11 +3,12 @@
 .nav-container {
     background-color: #fdf7f1;
     position: sticky;
+    top: 0;
     z-index: 1000;
     display: flex;
     justify-content:space-between;
     align-items: center;
-    padding: 0.8rem 2rem;
+    padding: 1rem 2rem;
     gap: 1em;
     box-shadow: 0px 1px 10px #e6ded6;
 }
@@ -63,7 +64,6 @@
     text-underline-offset: .25rem;
 }
 
-
 .search {
     display: flex;
     justify-content: center;
@@ -77,10 +77,13 @@
     justify-content: center;
     align-items: center;
 }
-.profile-circle {
-    transition: 0.1s;
-    font-size: 20px;
+
+.nav-profile-image {
+    width: 37px;
+    height: 35px;
+    border-radius: 50%;
 }
+
 .profile-circle:focus {
     outline-color:#e8abc3;
 }
@@ -110,6 +113,17 @@ a::before, a::after {
 }
 
 
+
+
+.body-no-scroll {
+    overflow: hidden;
+    overflow: hidden;
+  position: fixed; /* Prevent scrolling on iOS */
+  width: 100%; /* Prevent width from changing on iOS */
+  touch-action: none; /* Prevent scrolling on touch devices */
+  }
+  
+
 .check-hamburger[type="checkbox"] {
     appearance: none;
     -webkit-appearance: none;
@@ -123,6 +137,7 @@ a::before, a::after {
     display: flex;
     align-items: center;
     justify-content: center;
+    font-size: 16px;
     gap: 2rem;
 }
 
@@ -139,9 +154,9 @@ a::before, a::after {
         justify-content: center;
         background-color: rgb(255, 223, 236);
         gap: 2rem;
-        top: 36.78px;
+        top: 46.38px;
         width: 100%;
-        height: calc(100vh - 36.78px);
+        height: calc(100vh - 46.38px);
         transition: 0.3s;
     }
     .check-hamburger[type="checkbox"]:checked ~ ul {
@@ -149,10 +164,10 @@ a::before, a::after {
         
     }
     .nav-container {
-        padding: 0.5rem 1rem;
+        padding: 0.7rem 1rem;
     }
     .web-name {
-        font-size: 1.5rem;
+        font-size: 1.6rem;
     }
     .profile-circle {
         padding: 1.1rem;
@@ -163,21 +178,28 @@ a::before, a::after {
     }
     .mai-sprite {
         /*115 × 23*/
-        transform: scale(1.5);
+        transform: scale(1.6);
     }
     .search-span {
         font-size: 1rem;
+    }
+    .nav-profile-image {
+        width: 52px;
+        height: 49px;
+        
     }
     
 }
 
 @media (max-width: 500px) {
-    
+    .ul-nav {
+        font-size: 18px;
+    }
     .web-title {
         gap: 0rem;
     }
     .web-name {
-        font-size: 1.1rem;
+        font-size: 1.3rem;
     }
     .profile-circle {
         padding: 0.7rem;
@@ -194,9 +216,10 @@ a::before, a::after {
     }
     .mai-sprite {
         /*115 × 23*/
-        transform: scale(1.2);
+        transform: scale(1.3);
     }
     .search-span {
         font-size: 0.8rem;
     }
+
 }

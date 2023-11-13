@@ -9,33 +9,36 @@ import Details from "./pages/Details";
 import Ingredients from "./pages/Ingredients";
 import NoPage from "./pages/NoPage";
 import QuickRecipe from "./pages/QuickRecipe";
-import { AuthProvider } from "./contexts/AuthContext";
-
-
+import { AuthProvider } from "./contexts/AuthContext.js";
+import PrivateRoute from "./components/PrivateRoute/PrivateRoute.js";
 
 function App() {
-
   return (
+    <AuthProvider>
       <div className="App">
-      <BrowserRouter>
-      <Routes>
-        <Route index element={<Home />} />
-        <Route path="/home" element={<Home />} />
-        <Route path="/about" element = {<About />} />
-        <Route path="/auth" element = {<Auth />} />
-        <Route path="/profile" element = {<Profile />} />
-        <Route path="/details/:id" element = {<Details />} />
-        <Route path="/quickRecipe/:category" element = {<QuickRecipe />} />
-        <Route path="/searchIngredients" element = {<Ingredients />} />
-        <Route path="*" element = {<NoPage />} />
-      </Routes>
-      </BrowserRouter>
-      
-    </div>
-
-    
+        <BrowserRouter>
+          <Routes>
+            <Route index element={<Home />} />
+            <Route path="/home" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/auth/*" element={<Auth />} />
+            <Route
+              path="/profile"
+              element={
+                <PrivateRoute>
+                  <Profile />
+                </PrivateRoute>
+              }
+            />
+            <Route path="/details/:id" element={<Details />} />
+            <Route path="/quickRecipe/:category" element={<QuickRecipe />} />
+            <Route path="/searchIngredients" element={<Ingredients />} />
+            <Route path="*" element={<NoPage />} />
+          </Routes>
+        </BrowserRouter>
+      </div>
+    </AuthProvider>
   );
 }
 
 export default App;
-

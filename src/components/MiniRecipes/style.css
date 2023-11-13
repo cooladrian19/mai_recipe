@@ -3,9 +3,17 @@
     display: flex;
     flex-direction: column;
     width: 300px;
-    border: 1px solid #e0e0e0;
+    height: 250px;
+    border: 2px solid rgb(87, 74, 80);
     border-radius: 8px;
     margin-bottom: 20px;
+    border-style: solid;
+    text-decoration: none;
+    overflow: hidden;
+    background-color: rgb(255, 255, 255);
+  }
+  .mini-card:hover {
+    border-color: #a16376;
   }
   
 .mini-image {
@@ -16,4 +24,15 @@
   
  .mini-info {
     padding: 10px;
+    color:#30292c;
+  }
+  .mini-info h3 {
+    overflow: hidden; 
+    text-overflow: ellipsis;    
+    white-space: nowrap;        
+    max-width: 100%; 
+    
+  }
+  .mini-info p {
+    font-weight: 400;
   }

@@ -50,4 +50,10 @@
 }
 
 
+@media  (max-width: 500px){
 
+    .footer {
+        gap: 0.7rem;
+        padding: 1rem 1rem;
+    }
+}

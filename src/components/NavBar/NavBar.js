@@ -1,8 +1,40 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "../../FirebaseConfig.js";
 import SearchIcon from "../../assets/recipeIcon.png";
+import defaultProfile from "../../assets/defaultProfile.png";
 import "./style.css";
 
 export default function NavBar() {
+
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [user, setUser] = useState(null);
+  const navigate = useNavigate();;
+  
+  useEffect(() => {
+    document.body.classList.toggle('body-no-scroll', isMenuOpen);
+  }, [isMenuOpen]);
+
+  const handleHamburgerClick = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
+    });
+    return () => unsubscribe(); 
+  }, []);
+
+  const handleProfileClick = () => {
+    if (user) {
+      navigate("/profile");
+    } else {
+      navigate("/auth"); 
+    }
+  };
+
   return (
     <nav className="nav-container">
       <a className="web-title" href="/">
@@ -12,11 +44,20 @@ export default function NavBar() {
         <span className="web-name">mai's recipe</span>
       </a>
 
-      <input className="check-hamburger" type="checkbox" id="hamburger"></input>
+      <input
+        className="check-hamburger"
+        type="checkbox"
+        id="hamburger"
+        checked={isMenuOpen}
+        onChange={handleHamburgerClick}
+      ></input>
       <label className="icon-hamburger" htmlFor="hamburger">
-        <i class="fa-solid fa-bars"></i>
+        {isMenuOpen ? (
+          <i className="fa-solid fa-xmark fa-lg"></i>
+        ) : (
+          <i className="fa-solid fa-bars fa-lg"></i>
+        )}
       </label>
-      
 
       <ul className="ul-nav">
         <li>
@@ -33,8 +74,20 @@ export default function NavBar() {
             </a>
           </a>
         </li>
+        {/*Profile pic here */}
         <li>
-          <a href="/profile" className="profile-circle" class="hover-line"><i className="fa-regular fa-user" ></i></a>
+        <a onClick={handleProfileClick} className="hover-line profile-circle">
+    {user ? (
+      <img
+        src={user.photoURL || defaultProfile}
+        alt="Profile"
+        className="nav-profile-image"
+
+      />
+    ) : (
+      <i className="fa-solid fa-user" style={{ fontSize: "22px" }}></i>
+    )}
+  </a>
         </li>
       </ul>
     </nav>

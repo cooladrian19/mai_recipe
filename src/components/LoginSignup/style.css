@@ -31,6 +31,7 @@
     border-color: rgb(87, 74, 80);
     padding: 0.3rem 1rem;
     transition-duration: 0.5s;
+    
 }
 .input-field:focus {
     outline-color: #e8abc3;
@@ -38,10 +39,11 @@
 
 
 .login-button {
+    font-size: 14px;
     margin-bottom: 10px;
     font-weight: 500;
     color: #412c26;
-    text-transform: uppercase;
+    text-transform: lowercase;
     background-color: #b18597;
     padding: 0.5em 2em;
     background: #fff0f0;
@@ -108,3 +110,13 @@
 .login-footer {
     text-align: left;
 }
+
+
+@media (max-width: 500px) {
+
+    .input-field {
+        font-size: 16px;
+    }
+
+}
+    

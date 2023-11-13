@@ -1,3 +1,13 @@
-h1 {
-    padding: 10rem;
+.four-contain {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70vh;
+}
+
+.four{
+    border-style: solid ;
+    border-color: rgb(87, 74, 80);
+    border-radius: 2rem;
+    width: 300px;
 }
