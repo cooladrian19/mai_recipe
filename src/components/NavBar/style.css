@@ -83,7 +83,9 @@
     height: 35px;
     border-radius: 50%;
 }
-
+.profile-circle {
+    cursor: pointer;
+}
 .profile-circle:focus {
     outline-color:#e8abc3;
 }

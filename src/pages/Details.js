@@ -13,6 +13,7 @@ export default function Details() {
   const user = auth.currentUser;
   const db = getDatabase();
   const [isFavorited, setIsFavorited] = useState(false);
+  
 
 
   const handleFavorite = (e) => {
@@ -102,8 +103,10 @@ export default function Details() {
     checkFavoriteStatus();
 
     return () => {
-      const favoritesRef = ref(db, `users/${user.uid}/favorites`);
-      off(favoritesRef); 
+      if (user) {
+        const favoritesRef = ref(db, `users/${user.uid}/favorites`);
+        off(favoritesRef);  
+      }
     };
 
   }, [id, user, db]);
