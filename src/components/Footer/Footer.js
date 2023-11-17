@@ -22,7 +22,7 @@ export default function Footer() {
                         <img className="linkedin-logo" src={linkedinLogo}alt="LinkedIn" /> linkedin
                     </a>
                 </div>
-                <a href="/about" className="hover-line">about</a>
+                <Link to="/about" className="hover-line">about</Link>
             </div>
         </div>
     );
