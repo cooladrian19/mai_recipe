@@ -4,16 +4,16 @@ import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../../FirebaseConfig.js";
 import SearchIcon from "../../assets/recipeIcon.png";
 import defaultProfile from "../../assets/defaultProfile.png";
+import { Link } from "react-router-dom";
 import "./style.css";
 
 export default function NavBar() {
-
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [user, setUser] = useState(null);
-  const navigate = useNavigate();;
-  
+  const navigate = useNavigate();
+
   useEffect(() => {
-    document.body.classList.toggle('body-no-scroll', isMenuOpen);
+    document.body.classList.toggle("body-no-scroll", isMenuOpen);
   }, [isMenuOpen]);
 
   const handleHamburgerClick = () => {
@@ -24,25 +24,25 @@ export default function NavBar() {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
     });
-    return () => unsubscribe(); 
+    return () => unsubscribe();
   }, []);
 
   const handleProfileClick = () => {
     if (user) {
       navigate("/profile");
     } else {
-      navigate("/auth"); 
+      navigate("/auth");
     }
   };
 
   return (
     <nav className="nav-container">
-      <a className="web-title" href="/">
+      <Link to="/home" className="web-title" >
         <div className="sprite-container">
           <div className="mai-sprite"></div>
         </div>
         <span className="web-name">mai's recipe</span>
-      </a>
+      </Link>
 
       <input
         className="check-hamburger"
@@ -62,32 +62,29 @@ export default function NavBar() {
       <ul className="ul-nav">
         <li>
           <a className="search">
-            <a className="hover-line" href="/searchIngredients">
+            <Link to="/searchIngredients" className="hover-line">
               <img src={SearchIcon} alt="Search Icon" /> search by ingredients
-            </a>
+            </Link>
           </a>
         </li>
         <li>
-          <a className="about">
-            <a className="hover-line" href="/about">
-              about
-            </a>
-          </a>
+          <Link to="/about" className="hover-line about">
+            about
+          </Link>
         </li>
         {/*Profile pic here */}
         <li>
-        <a onClick={handleProfileClick} className="hover-line profile-circle">
-    {user ? (
-      <img
-        src={user.photoURL || defaultProfile}
-        alt="Profile"
-        className="nav-profile-image"
-
-      />
-    ) : (
-      <i className="fa-solid fa-user" style={{ fontSize: "22px" }}></i>
-    )}
-  </a>
+          <a onClick={handleProfileClick} className="hover-line profile-circle">
+            {user ? (
+              <img
+                src={user.photoURL || defaultProfile}
+                alt="Profile"
+                className="nav-profile-image"
+              />
+            ) : (
+              <i className="fa-solid fa-user" style={{ fontSize: "22px" }}></i>
+            )}
+          </a>
         </li>
       </ul>
     </nav>

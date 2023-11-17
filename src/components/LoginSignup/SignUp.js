@@ -21,7 +21,7 @@ export default function SignUp( { onSignup } ) {
   return (
     <div className='login-container' >
         <div className="sprite-container">
-          <a href="/home" className="mai-sprite"></a>
+          <Link to="/home" className="mai-sprite"></Link>
         </div>
         <form className="login-field" onSubmit={handleSubmit}>
             {/* 
