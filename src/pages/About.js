@@ -24,12 +24,12 @@ export default function About() {
                 cooking experience.
               </p>
               <p>
-                To bring my idea to life, I've integrated <a href="https://www.edamam.com/" target="_blank"><strong>Edamam's Recipe Search API</strong></a>, utilizing its free version. 
+                To bring my idea to life, I've integrated <a href="https://www.edamam.com/" target="_blank" rel="noopener noreferrer"><strong>Edamam's Recipe Search API</strong></a>, utilizing its free version. 
                 This provides access to a wide array of recipes, but with restrictions to 10 API calls per minute and a monthly limit 
                 of 100,000 calls. So please dont spam the API :)
               </p>
               <p>
-                For user authentication and data storage, <a href="https://firebase.google.com/docs/auth" target="_blank"><strong>Google Firebase</strong></a> makes it easy and simple. It securely manages 
+                For user authentication and data storage, <a href="https://firebase.google.com/docs/auth" target="_blank" rel="noopener noreferrer"><strong>Google Firebase</strong></a> makes it easy and simple. It securely manages 
                 user login and signup processes, while Firebase Storage houses user data, including personalized 
                 settings and favorite recipes.
               </p>
