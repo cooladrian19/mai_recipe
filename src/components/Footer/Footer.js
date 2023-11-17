@@ -3,6 +3,7 @@ import './style.css';
 import githubLogo from '../../assets/github.png';
 import linkedinLogo from '../../assets/linkedin.png';
 import chopsticksLogo from '../../assets/chopsticks.png';
+import { Link } from "react-router-dom";
 
 export default function Footer() {
     return (
