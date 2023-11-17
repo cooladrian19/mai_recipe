@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import "./Profile.css";
 import Navbar from "../components/NavBar/NavBar";
 import Footer from "../components/Footer/Footer";
 import ProfileEdit from "../components/ProfileEdit/ProfileEdit";
@@ -39,7 +38,6 @@ export default function Profile() {
         
         <ProfileEdit />
         <SavedRecipes  favoriteRecipes={favorites}/>
-    
         
       <Footer />
     </div>

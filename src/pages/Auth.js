@@ -10,11 +10,11 @@ export default function Auth() {
   const auth = getAuth()
 
   const handleSignup = (email, password) => {
-    console.log('handleLogin called with:', email, password); // Debug log
+    console.log('handleLogin called with:', email, password); 
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         // Signed in
-        console.log('User signed in:', userCredential); // Debug log
+        console.log('User signed in:', userCredential); 
         console.log(userCredential, "auth data");
         navigate('/home');
       })

@@ -18,10 +18,11 @@ export default function ProfileEdit() {
   const [profileImageUrl, setProfileImageUrl] = useState("");
   const [initialLoad, setInitialLoad] = useState(true);
 
+  
+
   useEffect(() => {
     const user = auth.currentUser;
     if (user && initialLoad) {
-
       const userProfileRef = dbRef(database, `users/${user.uid}`);
       onValue(userProfileRef, (snapshot) => {
         const userData = snapshot.val();
@@ -29,7 +30,9 @@ export default function ProfileEdit() {
           setName(userData.Name || '');
           setUsername(userData.username || '');
           setDob(userData.dob || '');
+          console.log("url: " + profileImageUrl);
           if (userData.profilePicture) {
+            console.log("url: " + profileImageUrl);
             setProfileImageUrl(userData.profilePicture);
           }
         }
