@@ -32,6 +32,8 @@ export default function QuickRecipe() {
       } finally {
         setLoading(false);
       }
+
+      
     };
 
     fetchQuickRecipes();
@@ -39,6 +41,7 @@ export default function QuickRecipe() {
 
   const splideQuickSettings = {
     perPage: 4,
+    focus: 0,
     arrows: true,
     height: 300,
     width: 1250,
@@ -46,6 +49,7 @@ export default function QuickRecipe() {
     autoplay: true,
     gap: "1rem",
     wheel: true,
+    
     breakpoints: {
       1343: {
         width: 900,
