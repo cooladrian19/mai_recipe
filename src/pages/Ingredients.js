@@ -5,293 +5,290 @@ import "./Ingredients.css";
 import SideImg from "../assets/cooking.png";
 import Recipes from "../components/Recipes/Recipes";
 
-
 export default function Ingredients() {
   const [recipes, setRecipes] = useState([]);
   const [selectedIngredients, setSelectedIngredients] = useState([]);
-  const [fetchRecipes, setFetchRecipes] = useState(false);
-  const [recipesFetched, setRecipesFetched] = useState(false);
-  const [ingredientHash, setIngredientHash] = useState({});
-  const [includeCommonIngredients, setIncludeCommonIngredients] = useState(false);
-  const [hasMatches, setHasMatches] = useState(true); 
-  const [loading, setLoading] = useState(false);
 
+  const [recipesFetched, setRecipesFetched] = useState(false);
+
+  const [includeCommonIngredients, setIncludeCommonIngredients] =
+    useState(false);
+  const [hasMatches, setHasMatches] = useState(true);
+  const [loading, setLoading] = useState(false);
+  const MAX_FETCHES = 5;
 
   useEffect(() => {
     const hash = {};
     selectedIngredients.forEach((ingredient) => {
-      const normalizedIngredient = ingredient.toLowerCase().replace(/-/g, ' ' ).trim();
+      const normalizedIngredient = ingredient
+        .toLowerCase()
+        .replace(/-/g, " ")
+        .trim();
       hash[normalizedIngredient] = true;
     });
-    setIngredientHash(hash);
   }, [selectedIngredients]);
-
-
-  useEffect(() => {
-    if (fetchRecipes && selectedIngredients.length > 0) {
-      fetchEdamamRecipesByIngredient(selectedIngredients);
-      setFetchRecipes(false);
-    }
-  }, [fetchRecipes, selectedIngredients]);
-
 
   useEffect(() => {
     if (includeCommonIngredients) {
-      // Add common ingredients to the list if they're not already included
-      const updatedIngredients = [...new Set([...selectedIngredients, ...commonIngredients])];
+      const updatedIngredients = [
+        ...new Set([...selectedIngredients, ...commonIngredients]),
+      ];
       setSelectedIngredients(updatedIngredients);
     } else {
-      // Remove common ingredients from the list if they are included
-      const filteredIngredients = selectedIngredients.filter(ingredient => !commonIngredients.includes(ingredient));
+      const filteredIngredients = selectedIngredients.filter(
+        (ingredient) => !commonIngredients.includes(ingredient)
+      );
       setSelectedIngredients(filteredIngredients);
     }
   }, [includeCommonIngredients]);
-  
 
   useEffect(() => {
-    if (!selectedIngredients.some(ingredient => commonIngredients.includes(ingredient))) {
+    if (
+      !selectedIngredients.some((ingredient) =>
+        commonIngredients.includes(ingredient)
+      )
+    ) {
       setIncludeCommonIngredients(false);
     }
   }, [selectedIngredients]);
 
-
-  
-  const fetchEdamamRecipesByIngredient = async (ingredients) => {
-
-    const firstIngredient = ingredients[0];
-    const apiUrl = `https://api.edamam.com/search?q=${firstIngredient}&app_id=${process.env.REACT_APP_APP_ID}&app_key=${process.env.REACT_APP_APP_KEY}&to=100`;
-
+  const fetchRecipesByIngredient = async (ingredient) => {
+    console.log(`Fetching recipes for ingredient: ${ingredient}`);
+    const apiUrl = `https://api.edamam.com/search?q=${ingredient}&app_id=${process.env.REACT_APP_APP_ID}&app_key=${process.env.REACT_APP_APP_KEY}&to=100`;
     try {
       const response = await fetch(apiUrl);
       const data = await response.json();
-      const matchedRecipes = data.hits.filter((recipe) =>
-        isRecipeMatching(recipe.recipe.ingredients)
-      );
-  
-      setRecipes(matchedRecipes);
-      setRecipesFetched(true);
-  
-      if (matchedRecipes.length === 0) {
-        setHasMatches(false);
-      }
+      return data.hits || [];
     } catch (error) {
-      console.error("Error fetching recipes from Edamam: ", error);
-      setRecipesFetched(true);
-      setHasMatches(false);
-    } finally {
-      setLoading(false); 
-      setRecipesFetched(true); 
+      console.error(
+        "Error fetching recipes for ingredient:",
+        ingredient,
+        error
+      );
+      return [];
     }
+  };
+  
+  // Function to combine and filter recipes from multiple API calls
+  const combineAndFilterRecipes = (fetchedRecipesArrays) => {
+    const combinedRecipes = [].concat(...fetchedRecipesArrays);
+    const uniqueRecipes = Array.from(
+      new Set(combinedRecipes.map((recipe) => recipe.recipe.uri))
+    ).map((uri) => combinedRecipes.find((recipe) => recipe.recipe.uri === uri));
+    return uniqueRecipes.filter((recipe) =>
+      isRecipeMatching(recipe.recipe.ingredients)
+    );
   };
 
   const isRecipeMatching = (recipeIngredients) => {
-    if (!Array.isArray(recipeIngredients)) {
-      console.error("recipeIngredients is not an array", recipeIngredients);
-      return false;
-    }
-
-    console.log("Checking recipe with ingredients:", recipeIngredients);
-
-    return recipeIngredients.every((ingredientObj) => {
-      const normalizedIngredient = ingredientObj.food.toLowerCase().replace(/-/g, ' ' ).trim();
-      const ingredientExists = ingredientHash[normalizedIngredient];
-      if (!ingredientExists) {
-        console.log(`Ingredient not found: ${ingredientObj.food}`);
-      }
-      else {
-        console.log(`Ingredientsss  found: ${ingredientObj.food}`);
-      }
-      return ingredientExists;
-    });
+    return recipeIngredients.every((ingredientObj) =>
+      selectedIngredients.includes(ingredientObj.food.toLowerCase())
+    );
   };
 
   // Function to update selected ingredients
   const handleIngredientSelection = (e) => {
     const ingredient = e.target.value;
     const isCategory = ingredient in ingredientCategoryMap;
-  
+
     if (e.target.checked) {
       let newIngredients;
       if (isCategory) {
         // Add all specific ingredients for the category
-        newIngredients = [...selectedIngredients, ...ingredientCategoryMap[ingredient]];
+        newIngredients = [
+          ...selectedIngredients,
+          ...ingredientCategoryMap[ingredient],
+        ];
       } else {
         // Add just this specific ingredient
         newIngredients = [...selectedIngredients, ingredient];
       }
-      setSelectedIngredients(Array.from(new Set(newIngredients))); 
+      setSelectedIngredients(Array.from(new Set(newIngredients)));
     } else {
       if (isCategory) {
         // Remove all specific ingredients for the category
-        setSelectedIngredients(selectedIngredients.filter(item => !ingredientCategoryMap[ingredient].includes(item)));
+        const categoryIngredients = new Set(ingredientCategoryMap[ingredient]);
+        setSelectedIngredients(
+          selectedIngredients.filter((item) => !categoryIngredients.has(item))
+        );
       } else {
         // Remove just this specific ingredient
-        setSelectedIngredients(selectedIngredients.filter(item => item !== ingredient));
+        setSelectedIngredients(
+          selectedIngredients.filter((item) => item !== ingredient)
+        );
       }
     }
   };
 
-  const performIngredientSearch = (e) => {
+  const performIngredientSearch = async (e) => {
     e.preventDefault();
     setRecipes([]);
-    setRecipesFetched(false); 
-    setHasMatches(true); 
+    setRecipesFetched(false);
+    setHasMatches(true);
     setLoading(true);
-    fetchEdamamRecipesByIngredient(selectedIngredients);
+
+    const allIngredients = includeCommonIngredients
+      ? [...selectedIngredients, ...commonIngredients]
+      : [...selectedIngredients];
+
+    const shuffledIngredients = allIngredients.sort(() => 0.5 - Math.random());
+    const ingredientsToFetch = shuffledIngredients.slice(0, MAX_FETCHES);
+
+    const fetchedRecipesPromises = ingredientsToFetch.map((ingredient) =>
+      fetchRecipesByIngredient(ingredient)
+    );
+
+    const fetchedRecipes = await Promise.all(fetchedRecipesPromises);
+    const filteredRecipes = combineAndFilterRecipes(fetchedRecipes);
+
+    setRecipes(filteredRecipes);
+    setLoading(false);
+    setRecipesFetched(true);
+    setHasMatches(filteredRecipes.length > 0);
+
+    console.log(`Total recipes fetched: ${filteredRecipes.length}`);
   };
 
   const commonIngredients = [
-    'black pepper', 
-    'white pepper', 
-    'water', 
-    'butter', 
-    'chicken seasoning', 
-    'beef seasoning', 
-    'salt', 
-    'sugar', 
-    'oil',
-    'flour',
-    'eggs',
-    'milk',
-    'rice',
-    'pasta',
-    'garlic',
-    'onion',
-    'baking powder',
-    'baking soda',
-    'vinegar',
-    'soy sauce',
-    'honey',
-    'tomato sauce',
-    'lemon juice',
-    'mustard',
-    'dried herbs',
-    'paprika',
-    'cinnamon',
-    'vanilla extract',
-    'yeast',
-    'cocoa powder',
-    'maple syrup',
-    'chili powder',
-    'oregano',
-    'thyme',
-    'cumin',
-    'coriander',
-    'turmeric',
-    'bay leaves',
-    'curry powder',
-    'nutmeg',
-    'red pepper flakes',
-    'canned beans',
-    'canned tomatoes',
-    'chicken broth',
-    'beef broth',
-    'vegetable broth',
-    'coconut milk',
-    'cornstarch',
-    'peanut butter',
-    'almonds',
-    'walnuts',
-    'olive oil',
-    'sesame oil',
-    'canola oil',
-    'sunflower oil',
-    'coffee',
-    'tea'
+    "black pepper",
+    "white pepper",
+    "water",
+    "butter",
+    "chicken seasoning",
+    "beef seasoning",
+    "salt",
+    "sugar",
+    "oil",
+    "flour",
+    "eggs",
+    "milk",
+    "rice",
+    "pasta",
+    "garlic",
+    "onion",
+    "baking powder",
+    "baking soda",
+    "vinegar",
+    "soy sauce",
+    "honey",
+    "tomato sauce",
+    "lemon juice",
+    "mustard",
+    "dried herbs",
+    "paprika",
+    "cinnamon",
+    "vanilla extract",
+    "yeast",
+    "cocoa powder",
+    "maple syrup",
+    "chili powder",
+    "oregano",
+    "thyme",
+    "cumin",
+    "coriander",
+    "turmeric",
+    "bay leaves",
+    "curry powder",
+    "nutmeg",
+    "red pepper flakes",
+    "canned beans",
+    "canned tomatoes",
+    "chicken broth",
+    "beef broth",
+    "vegetable broth",
+    "coconut milk",
+    "cornstarch",
+    "peanut butter",
+    "almonds",
+    "walnuts",
+    "olive oil",
+    "sesame oil",
+    "canola oil",
+    "sunflower oil",
+    "coffee",
+    "tea",
   ];
-  
 
   const ingredientCategoryMap = {
     oil: [
-      'olive oil', 
-      'extra virgin olive oil', 
-      'vegetable oil', 
-      'canola oil', 
-      'sunflower oil', 
-      'coconut oil', 
-      'peanut oil', 
-      'grapeseed oil', 
-      'sesame oil', 
-      'avocado oil'
+      "olive oil",
+      "extra virgin olive oil",
+      "vegetable oil",
+      "canola oil",
+      "sunflower oil",
+      "coconut oil",
+      "peanut oil",
+      "grapeseed oil",
+      "sesame oil",
+      "avocado oil",
     ],
     chicken: [
-      'chicken wings', 
-      'chicken breasts', 
-      'chicken legs', 
-      'chicken thighs', 
-      'ground chicken', 
-      'chicken drumsticks', 
-      'whole chicken', 
-      'boneless chicken', 
-      'chicken tenders', 
-      'chicken cutlets'
+      "chicken wings",
+      "chicken breasts",
+      "chicken legs",
+      "chicken thighs",
+      "ground chicken",
+      "chicken drumsticks",
+      "whole chicken",
+      "boneless chicken",
+      "chicken tenders",
+      "chicken cutlets",
     ],
     beef: [
-      'ground beef', 
-      'steak', 
-      'beef ribs', 
-      'beef brisket', 
-      'beef loin', 
-      'beef chuck', 
-      'beef shank', 
-      'filet mignon', 
-      'sirloin', 
-      'ribeye'
+      "ground beef",
+      "steak",
+      "beef ribs",
+      "beef brisket",
+      "beef loin",
+      "beef chuck",
+      "beef shank",
+      "filet mignon",
+      "sirloin",
+      "ribeye",
     ],
     fish: [
-      'salmon', 
-      'tuna', 
-      'cod', 
-      'tilapia', 
-      'halibut', 
-      'trout', 
-      'haddock', 
-      'mackerel', 
-      'sardines', 
-      'anchovies'
+      "salmon",
+      "tuna",
+      "cod",
+      "tilapia",
+      "halibut",
+      "trout",
+      "haddock",
+      "mackerel",
+      "sardines",
+      "anchovies",
     ],
     rice: [
-      'white rice', 
-      'brown rice', 
-      'jasmine rice', 
-      'basmati rice', 
-      'short-grain rice', 
-      'sushi rice', 
-      'arborio rice', 
-      'black rice', 
-      'wild rice', 
-      'red rice',
-      'sticky rice', 
-      'parboiled rice', 
-      'converted rice', 
-      'long-grain rice', 
-      'calrose rice', 
-      'wehani rice', 
-      'bamboo rice', 
-      'valencia rice', 
-      'carnaroli rice',
-      'bhutanese red rice', 
-      'forbidden rice', 
-      'paella rice', 
-      'glutinous rice', 
-      'instant rice', 
-      'sprouted rice', 
-      'risotto rice'
+      "white rice",
+      "brown rice",
+      "jasmine rice",
+      "basmati rice",
+      "short-grain rice",
+      "sushi rice",
+      "arborio rice",
+      "black rice",
+      "wild rice",
+      "red rice",
+      "sticky rice",
+      "parboiled rice",
+      "converted rice",
+      "long-grain rice",
+      "calrose rice",
+      "wehani rice",
+      "bamboo rice",
+      "valencia rice",
+      "carnaroli rice",
+      "bhutanese red rice",
+      "forbidden rice",
+      "paella rice",
+      "glutinous rice",
+      "instant rice",
+      "sprouted rice",
+      "risotto rice",
     ],
-    apple: [
-      'green apples',
-      'red apples',
-
-    ],
-    onion: [
-      'white onions',
-      'yellow onions',
-
-    ],
-
+    apple: ["green apples", "red apples"],
+    onion: ["white onions", "yellow onions"],
   };
-  
-
 
   return (
     <div className="footer-margin">
@@ -1194,7 +1191,7 @@ export default function Ingredients() {
             <label htmlFor="tabsix">Baking Supplies</label>
             <div class="tab">
               <ul class="ks-cboxtags">
-              <li>
+                <li>
                   <input
                     id="oil"
                     type="checkbox"
@@ -1543,8 +1540,7 @@ export default function Ingredients() {
               <ul className="recipes-container">
                 {recipes.map((recipe, index) => (
                   <Recipes
-                    key={recipe.recipe.uri}
-                    id={recipe.recipe.label}
+                    id={recipe.recipe.uri}
                     image={recipe.recipe.image}
                     title={recipe.recipe.label}
                     calories={Math.floor(recipe.recipe.calories)}
@@ -1556,12 +1552,14 @@ export default function Ingredients() {
               </ul>
             ) : (
               <p className="no-recipes-found">
-                <i class="fa-solid fa-circle-exclamation" style={{color: "#" + "a16376"}}></i>
+                <i
+                  class="fa-solid fa-circle-exclamation"
+                  style={{ color: "#" + "a16376" }}
+                ></i>
                 No recipes found. Try a different search.
               </p>
             )
-          ) : null 
-          }
+          ) : null}
         </div>
 
         {!recipesFetched && (
