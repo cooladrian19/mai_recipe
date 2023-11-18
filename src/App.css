@@ -32,7 +32,9 @@ ExtraBold 800
     -webkit-font-smoothing: antialiased;
     border-width: 2px;
     border-color: rgb(87, 74, 80);
+    
 }
+
 
 body {
     background-color: #fdf7f1;

@@ -67,6 +67,7 @@ export default function Search() {
           placeholder="enter any type of food..."
           value={search}
           onChange={updateSearch}
+          tabindex="0"
         />
         <button type="submit" className="search-recipe-button-home">
           search
