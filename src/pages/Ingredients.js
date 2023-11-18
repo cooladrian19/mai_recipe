@@ -8,11 +8,8 @@ import Recipes from "../components/Recipes/Recipes";
 export default function Ingredients() {
   const [recipes, setRecipes] = useState([]);
   const [selectedIngredients, setSelectedIngredients] = useState([]);
-
   const [recipesFetched, setRecipesFetched] = useState(false);
-
-  const [includeCommonIngredients, setIncludeCommonIngredients] =
-    useState(false);
+  const [includeCommonIngredients, setIncludeCommonIngredients] = useState(false);
   const [hasMatches, setHasMatches] = useState(true);
   const [loading, setLoading] = useState(false);
   const MAX_FETCHES = 5;
@@ -30,7 +27,7 @@ export default function Ingredients() {
 
   useEffect(() => {
     if (includeCommonIngredients) {
-      const updatedIngredients = [
+      const updatedIngredients = [  
         ...new Set([...selectedIngredients, ...commonIngredients]),
       ];
       setSelectedIngredients(updatedIngredients);
