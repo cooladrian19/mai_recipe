@@ -5,6 +5,9 @@
     align-items: center;
     gap: 1rem;
     padding-bottom: 2rem;
+  
+    
+    
 }
 .edit-header {
     background-color: #e7e7da;
@@ -24,12 +27,13 @@
     align-items: center;
     padding: 1rem;
     gap: 2rem;
-    
+  
 }
 .profile-edit-container {
     display: flex;
     flex-direction: column;
     gap: 1rem;
+    
 }
 
   /* profile IMG */
