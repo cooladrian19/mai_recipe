@@ -5,7 +5,7 @@ import ProfileEdit from "../components/ProfileEdit/ProfileEdit";
 import SavedRecipes from "../components/SavedRecipes/SavedRecipes";
 import { getAuth } from "firebase/auth";
 import { getDatabase, ref, onValue } from "firebase/database";
-
+import "./Profile.css";
 
 export default function Profile() {
 
@@ -33,7 +33,7 @@ export default function Profile() {
 
 
   return (
-    <div className="footer-margin">
+    <div className="footer-margin profile-contain" >
       <Navbar />
         
         <ProfileEdit />
