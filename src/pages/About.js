@@ -19,9 +19,10 @@ export default function About() {
               <p>
                 I wanted to create a tool that allows users to quickly access delicious recipes and start cooking. 
                 After a long day, people return home hungry and often frustrated; the last thing they need is a 
-                convoluted cooking process. Mai's Recipe is designed to simplify the meal decision-making process 
-                without making things complicated. It's tailored for the modern individual seeking an easy and enjoyable 
-                cooking experience.
+                complicated cooking process. Mai's Recipe is designed to simplify the meal decision-making process 
+                without making things difficult. Users can input ingredients they have in their kitchen and they will be given a variety of recipes 
+                that can be made with the chosen ingredients. It's meant for the modern individual seeking an easy and enjoyable 
+                cooking experience. 
               </p>
               <p>
                 To bring my idea to life, I've integrated <a href="https://www.edamam.com/" target="_blank" rel="noopener noreferrer"><strong>Edamam's Recipe Search API</strong></a>, utilizing its free version. 
