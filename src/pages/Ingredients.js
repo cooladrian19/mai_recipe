@@ -123,28 +123,40 @@ export default function Ingredients() {
     setRecipesFetched(false);
     setHasMatches(true);
     setLoading(true);
-
+  
+    // separate the manually selected ingredients and common ingredients
+    const manualIngredients = selectedIngredients.filter(
+      (ingredient) => !commonIngredients.includes(ingredient)
+    );
     const allIngredients = includeCommonIngredients
-      ? [...selectedIngredients, ...commonIngredients]
-      : [...selectedIngredients];
-
-    const shuffledIngredients = allIngredients.sort(() => 0.5 - Math.random());
-    const ingredientsToFetch = shuffledIngredients.slice(0, MAX_FETCHES);
-
+      ? [...manualIngredients, ...commonIngredients]
+      : [...manualIngredients];
+  
+    // prioritize manual ingredients for fetching
+    const shuffledManualIngredients = manualIngredients.sort(() => 0.5 - Math.random());
+    const shuffledCommonIngredients = commonIngredients.sort(() => 0.5 - Math.random());
+  
+    // ensure that we fetch from selected ingredients first, then from common if needed
+    const ingredientsToFetch = [
+      ...shuffledManualIngredients.slice(0, MAX_FETCHES),
+      ...shuffledCommonIngredients,
+    ].slice(0, MAX_FETCHES);
+  
     const fetchedRecipesPromises = ingredientsToFetch.map((ingredient) =>
       fetchRecipesByIngredient(ingredient)
     );
-
+  
     const fetchedRecipes = await Promise.all(fetchedRecipesPromises);
     const filteredRecipes = combineAndFilterRecipes(fetchedRecipes);
-
+  
     setRecipes(filteredRecipes);
     setLoading(false);
     setRecipesFetched(true);
     setHasMatches(filteredRecipes.length > 0);
-
+  
     console.log(`Total recipes fetched: ${filteredRecipes.length}`);
   };
+  
 
   const commonIngredients = [
     "black pepper",
@@ -1553,7 +1565,7 @@ export default function Ingredients() {
                   class="fa-solid fa-circle-exclamation"
                   style={{ color: "#" + "a16376" }}
                 ></i>
-                No recipes found. Try a different search.
+                No recipes found. Try selecting more ingredients.
               </p>
             )
           ) : null}
