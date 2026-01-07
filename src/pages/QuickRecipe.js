@@ -19,22 +19,23 @@ export default function QuickRecipe() {
 
   useEffect(() => {
     const fetchQuickRecipes = async () => {
-      setLoading(true);
-      try {
-        const response = await fetch(
-          `https://api.edamam.com/search?q=${category}&app_id=${process.env.REACT_APP_APP_ID}&app_key=${process.env.REACT_APP_APP_KEY}&time=1%2B&to=100`
-        );
-        const data = await response.json();
-        setRecipes(data.hits);
-        console.log(data);
-      } catch (error) {
-        console.error("Error fetching recipes:", error);
-      } finally {
-        setLoading(false);
-      }
+  setLoading(true);
 
-      
-    };
+  try {
+    const response = await fetch(
+      `https://api.edamam.com/api/recipes/v2?type=public&q=${encodeURIComponent(
+        category
+      )}&app_id=${process.env.REACT_APP_APP_ID}&app_key=${process.env.REACT_APP_APP_KEY}&time=1%2B`
+    );
+
+    const data = await response.json();
+    setRecipes(data.hits || []);
+  } catch (error) {
+    console.error("Error fetching quick recipes:", error);
+  } finally {
+    setLoading(false);
+  }
+};
 
     fetchQuickRecipes();
   }, [category]);

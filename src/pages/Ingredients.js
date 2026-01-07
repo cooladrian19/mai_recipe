@@ -49,22 +49,30 @@ export default function Ingredients() {
     }
   }, [selectedIngredients]);
 
-  const fetchRecipesByIngredient = async (ingredient) => {
-    console.log(`Fetching recipes for ingredient: ${ingredient}`);
-    const apiUrl = `https://api.edamam.com/search?q=${ingredient}&app_id=${process.env.REACT_APP_APP_ID}&app_key=${process.env.REACT_APP_APP_KEY}&to=100`;
-    try {
-      const response = await fetch(apiUrl);
-      const data = await response.json();
-      return data.hits || [];
-    } catch (error) {
-      console.error(
-        "Error fetching recipes for ingredient:",
-        ingredient,
-        error
-      );
-      return [];
-    }
-  };
+ const fetchRecipesByIngredient = async (ingredient) => {
+  console.log(`Fetching recipes for ingredient: ${ingredient}`);
+
+  const apiUrl = `https://api.edamam.com/api/recipes/v2?type=public&q=${encodeURIComponent(
+    ingredient
+  )}&app_id=${process.env.REACT_APP_APP_ID}&app_key=${process.env.REACT_APP_APP_KEY}&time=1%2B`;
+
+  try {
+    const response = await fetch(apiUrl);
+    const data = await response.json();
+    if (!response.ok) {
+  const text = await response.text();
+  console.error("Edamam failed:", response.status, text);
+  return [];
+}
+
+    return data.hits || [];
+    
+  } catch (error) {
+    console.error("Error fetching recipes for ingredient:", ingredient, error);
+    return [];
+  }
+};
+
   
   // Function to combine and filter recipes from multiple API calls
   const combineAndFilterRecipes = (fetchedRecipesArrays) => {
@@ -133,8 +141,9 @@ export default function Ingredients() {
       : [...manualIngredients];
   
     // prioritize manual ingredients for fetching
-    const shuffledManualIngredients = manualIngredients.sort(() => 0.5 - Math.random());
-    const shuffledCommonIngredients = commonIngredients.sort(() => 0.5 - Math.random());
+const shuffledManualIngredients = [...manualIngredients].sort(() => 0.5 - Math.random());
+const shuffledCommonIngredients = [...commonIngredients].sort(() => 0.5 - Math.random());
+
   
     // ensure that we fetch from selected ingredients first, then from common if needed
     const ingredientsToFetch = [

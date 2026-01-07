@@ -25,9 +25,11 @@ export default function Search() {
     setLoading(true); 
     setRecipesFetched(false);
     try {
-      const response = await fetch(
-        `https://api.edamam.com/search?q=${query}&app_id=${process.env.REACT_APP_APP_ID}&app_key=${process.env.REACT_APP_APP_KEY}&time=1%2B&to=100`
-      );
+    const response = await fetch(
+      `https://api.edamam.com/api/recipes/v2?type=public&q=${encodeURIComponent(
+        query
+      )}&app_id=${process.env.REACT_APP_APP_ID}&app_key=${process.env.REACT_APP_APP_KEY}&time=1%2B`
+    );
       const data = await response.json();
       setRecipes(data.hits);
       console.log(data);

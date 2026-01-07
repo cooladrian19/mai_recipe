@@ -16,7 +16,7 @@ export default function SavedRecipes({ favoriteRecipes,  }) {
           ).then((response) => response.json())
         )
       ).then((details) => {
-        setFavoriteRecipeDetails(details.map((detail) => detail.recipe));
+        setFavoriteRecipeDetails(details.map((detail) => detail?.recipe).filter(Boolean));
       });
     }
   }, [favoriteRecipes]);
